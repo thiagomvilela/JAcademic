@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 import models.dao.AcademicDAO;
 import models.dao.StudentDAO;
@@ -25,43 +24,51 @@ public class App {
         Scanner s = new Scanner(System.in);
 
         System.out.println("ESCOLHA O ID DO ALUNO QUE DESEJA ALTERAR: ");
-        var id = s.nextInt();        
+        var id_student = s.nextInt();
 
         System.out.println("ESCOLHA [1] APROVADO [0] REPROVADO: ");
 
-        boolean status;
+        String status;
+
         if (s.nextInt() == 1) 
         {
-            status = true;
-        } 
+            status = "Aprovado";
+        }
         else 
         {
-            status = false;
+            status = "Reprovado";
         }
 
-        StudentDAO.getInstance().alterStatus(id, status);
+        StudentDAO.getInstance().alterStatus(status, id_student);
     }
 
     public static void deletarAluno()
     {
         System.out.println("QUAL ID DO ALUNO QUE DESEJA DELETAR: ");
-        StudentDAO.getInstance().delete(new Scanner(System.in).nextInt());
+        StudentDAO.getInstance().deleteStudent(new Scanner(System.in).nextInt());
     }
 
     public static void adicionarNotas()
     {
-        int id;
-        var notes = new ArrayList<Double>();
+        int id_student;
+        double first_note, second_note, recuperation_note;
+        String status;
 
         System.out.println("QUAL ID DO ALUNO QUE DESEJA ADICIONAR NOTAS: ");
-        id = new Scanner(System.in).nextInt();
+        id_student = new Scanner(System.in).nextInt();
 
-        for(int i = 1; i <= 4; i++ )
-        {
-            System.out.println("NOTAS["+i+"]: " );
-            notes.add(new Scanner(System.in).nextDouble());
-        }               
+        System.out.println("PRIMEIRA NOTA: " );
+        first_note = new Scanner(System.in).nextDouble();
+        
+        System.out.println("SEGUNDA NOTA: " );
+        second_note = new Scanner(System.in).nextDouble();  
 
-        StudentDAO.getInstance().addNotes(id, notes);
+        System.out.println("PRIMEIRA NOTA: " );
+        recuperation_note = new Scanner(System.in).nextDouble();  
+
+        System.out.println("PRIMEIRA NOTA: " );
+        status = new Scanner(System.in).next();  
+
+        StudentDAO.getInstance().addNotes(id_student, first_note, second_note, recuperation_note, status);
     }
 }

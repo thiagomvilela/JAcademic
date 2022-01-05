@@ -34,7 +34,7 @@ public class StudentDAO
         connectionDb = ConnectionFactory.getConnectionDataBase();
     }
 
-    public void add(Student student)
+    public void addStudent(Student student)
     {
         try 
         {
@@ -43,10 +43,9 @@ public class StudentDAO
             statement = connectionDb.prepareStatement("use " + nameDatabase + ";");
             statement.executeUpdate();
 
-            statement = connectionDb.prepareStatement("INSERT INTO STUDENTS ( STUDENT_NAME , STUDENT_STATUS ) VALUES (?,?)");
+            statement = connectionDb.prepareStatement("INSERT INTO STUDENT (NAME_STUDENT) VALUES (?)");
 
             statement.setString(1, student.getName());
-            statement.setBoolean(2, student.isStatus());
 
             statement.executeUpdate();
 
@@ -62,7 +61,7 @@ public class StudentDAO
         }
     }    
 
-    public void addNotes(int id, List<Double> notes)
+    public void addNotes(int id_student, double first_note, double second_note, double recuperation_note, String status)
     {       
         try {
             connectionDb = ConnectionFactory.getConnectionDataBase();
@@ -70,20 +69,23 @@ public class StudentDAO
             statement = connectionDb.prepareStatement("use " + nameDatabase + ";");
             statement.executeUpdate();
 
-            String sql = "INSERT INTO NOTES ( NOTE_VALUE, STUDENT_ID) VALUES ";
-            for (double note : notes) 
-            {            
-                sql += " (" + note + " , " + id + "),";                
-            }
-            sql = sql.substring(0, sql.length()-1);
-            statement = connectionDb.prepareStatement(sql);
+            var sql = new StringBuilder();
+            sql.append("INSERT INTO NOTE (ID_STUDENT, FIRST_NOTE, SECOND_NOTE, RECUPERATION_NOTE, STATUS) VALUES (?, ?, ?, ?, ?)");
+
+            statement.setInt(1, id_student);
+            statement.setDouble(2, first_note);
+            statement.setDouble(3, second_note);
+            statement.setDouble(4, recuperation_note);
+            statement.setString(5, status);
+
+            statement = connectionDb.prepareStatement(sql.toString());
             statement.executeUpdate();
 
-            System.out.println("Notas adionadas com sucesso ");
+            System.out.println("Notas adicionadas com sucesso ");
         } 
         catch (SQLException e) 
         {
-            System.out.println("Erro ao adionar notas: " + e);
+            System.out.println("Erro ao adicionar notas: " + e);
         } 
         finally 
         {
@@ -91,7 +93,7 @@ public class StudentDAO
         }
     }
 
-    public void alterStatus(int id, boolean status)
+    public void alterStatus(String status, int id_student)
     {
         try {
             connectionDb = ConnectionFactory.getConnectionDataBase();
@@ -99,17 +101,15 @@ public class StudentDAO
             statement = connectionDb.prepareStatement("use " + nameDatabase + ";");
             statement.executeUpdate();
 
-            var sql = "UPDATE STUDENTS SET ";
-            sql += " STUDENT_STATUS = ?";
-            sql += " WHERE STUDENT_ID = ? ;";
+            var sql = "UPDATE NOTE SET STATUS = ? WHERE ID_STUDENT = ?";
 
             statement = connectionDb.prepareStatement(sql);
-            statement.setBoolean(1, status);
-            statement.setInt(2, id);
+            statement.setString(1, status);
+            statement.setInt(2, id_student);
 
             statement.executeUpdate();
 
-            System.out.println("Mudança de status com realizada com sucesso");
+            System.out.println("Mudança de status realizada com sucesso");
         } 
         catch (SQLException e) 
         {
@@ -122,7 +122,7 @@ public class StudentDAO
         
     }
 
-    public void delete(int id) 
+    public void deleteStudent(int id_student) 
     {
         try 
         {
@@ -131,11 +131,10 @@ public class StudentDAO
             statement = connectionDb.prepareStatement("use " + nameDatabase + ";");
             statement.executeUpdate();
 
-            var sql = "DELETE FROM STUDENTS";
-            sql += " WHERE STUDENT_ID = ? ;";
+            var sql = "DELETE FROM STUDENT WHERE STUDENT_ID = ?";
 
             statement = connectionDb.prepareStatement(sql);
-            statement.setInt(1, id);
+            statement.setInt(1, id_student);
 
             statement.executeUpdate();
 
@@ -163,18 +162,17 @@ public class StudentDAO
             statement = connectionDb.prepareStatement("use " + nameDatabase + ";");
             statement.executeUpdate();
 
-            statement = connectionDb.prepareStatement("SELECT * FROM STUDENTS");
+            statement = connectionDb.prepareStatement("SELECT * FROM STUDENT");
             result = statement.executeQuery();
 
             while (result.next()) {
                 var student = new Student();
 
-                student.setId(result.getInt("STUDENT_ID"));
-                student.setName(result.getString("STUDENT_NAME"));
-                student.setStatus(result.getBoolean("STUDENT_STATUS"));
+                student.setId(result.getInt("ID_STUDENT"));
+                student.setName(result.getString("NAME_STUDENT"));
 
                 //Adicionando Notas do Aluno
-                statement = connectionDb.prepareStatement("SELECT * FROM NOTES WHERE STUDENT_ID = " + student.getId());
+                statement = connectionDb.prepareStatement("SELECT * FROM NOTE WHERE ID_STUDENT = " + student.getId());
                 ResultSet resultQuery2 = statement.executeQuery();
 
                 
@@ -184,8 +182,8 @@ public class StudentDAO
                     if(nota != null)
                     {
                         student.notes.add(nota);
-                    }                        
-                }              
+                    }
+                }
 
                 listStudents.add(student);
             }
