@@ -32,24 +32,24 @@ public class AcademicDAO
 
         if(isInitialize)
         {           
-            createTableStudents();
+            createTableStudent();
             createTableNote();
 
             var studentDAO = StudentDAO.getInstance();
-            studentDAO.add(new Student("Vinicius Lima"));
-            studentDAO.add(new Student("Roberto Braga"));
-            studentDAO.add(new Student("Samanta Santos"));
-            studentDAO.add(new Student("Thiago Oliveira"));
-            studentDAO.add(new Student("Rebeca Andrade"));
-            studentDAO.add(new Student("Neymar Francisco"));
-            studentDAO.add(new Student("Pedro Lucas"));
-            studentDAO.add(new Student("Mateus Silva"));
-            studentDAO.add(new Student("Lucas Mattos"));
-            studentDAO.add(new Student("Letícia Biatriz"));
-            studentDAO.add(new Student("Maria Clara"));
-            studentDAO.add(new Student("Ana Gabriela"));
-            studentDAO.add(new Student("Samantha Araújo"));
-            studentDAO.add(new Student("Felipe Santos"));            
+            studentDAO.addStudent(new Student("Vinícius Lima"));
+            studentDAO.addStudent(new Student("Roberto Braga"));
+            studentDAO.addStudent(new Student("Samanta Santos"));
+            studentDAO.addStudent(new Student("Thiago Oliveira"));
+            studentDAO.addStudent(new Student("Rebeca Andrade"));
+            studentDAO.addStudent(new Student("Neymar Francisco"));
+            studentDAO.addStudent(new Student("Pedro Lucas"));
+            studentDAO.addStudent(new Student("Mateus Silva"));
+            studentDAO.addStudent(new Student("Lucas Matos"));
+            studentDAO.addStudent(new Student("Letícia Beatriz"));
+            studentDAO.addStudent(new Student("Maria Clara"));
+            studentDAO.addStudent(new Student("Ana Gabriela"));
+            studentDAO.addStudent(new Student("Samantha Araújo"));
+            studentDAO.addStudent(new Student("Felipe Santos"));            
         }
     }
 
@@ -99,7 +99,7 @@ public class AcademicDAO
         }
     }
 
-    private void createTableStudents()
+    private void createTableStudent()
     {
         try 
         {
@@ -107,20 +107,17 @@ public class AcademicDAO
             useDatabase();
 
             var sql = new StringBuilder();
-            sql.append(" CREATE TABLE IF NOT EXISTS STUDENTS (");
-            sql.append(" STUDENT_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,");
-            sql.append(" STUDENT_NAME varchar(50),");
-            sql.append(" STUDENT_STATUS bool );");
+            sql.append("CREATE TABLE IF NOT EXISTS STUDENT (ID_STUDENT INT NOT NULL AUTO_INCREMENT, NAME_STUDENT VARCHAR(60) NOT NULL, PRIMARY KEY (ID_STUDENT));");
 
             statement = connectionDb.prepareStatement(sql.toString());
-
+            
             statement.executeUpdate();
-
-            System.out.println("Table Students criada com Sucesso");
+            
+            System.out.println("Table Student criada com Sucesso");
         } 
         catch (SQLException e) 
         {
-            System.out.println("Erro ao criar Table Students: " +  e);
+            System.out.println("Erro ao criar Table Student: " +  e);
         } 
         finally 
         {
@@ -137,21 +134,17 @@ public class AcademicDAO
             useDatabase();
 
             var sql = new StringBuilder();
-            sql.append("CREATE TABLE IF NOT EXISTS NOTES (");
-            sql.append("NOTE_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,");
-            sql.append("NOTE_VALUE DOUBLE,");
-            sql.append("STUDENT_ID INT,");
-            sql.append("CONSTRAINT FK_STUDENTS FOREIGN KEY (STUDENT_ID) REFERENCES STUDENTS (STUDENT_ID)");
-            sql.append(");");
+
+            sql.append("CREATE TABLE IF NOT EXISTS NOTE (ID_STUDENT INT NOT NULL, FIRST_NOTE DECIMAL(4,2), SECOND_NOTE DECIMAL(4,2), RECUPERATION_NOTE DECIMAL(4,2), STATUS VARCHAR(20) DEFAULT \"Cursando\", FOREIGN KEY (ID_STUDENT) REFERENCES STUDENT(ID_STUDENT), PRIMARY KEY (ID_STUDENT));");
 
             statement = connectionDb.prepareStatement(sql.toString());
             statement.executeUpdate();
 
-            System.out.println("Table Notes criada com Sucesso");
+            System.out.println("Table Note criada com Sucesso");
         } 
         catch (SQLException e) 
         {
-            System.out.println("Erro ao criar Table Notes: " + e);
+            System.out.println("Erro ao criar Table Note: " + e);
         } 
         finally 
         {
@@ -171,5 +164,4 @@ public class AcademicDAO
             System.out.println("Erro: use " + nameDatabase + ": " + e);
         }
     }
-
 }

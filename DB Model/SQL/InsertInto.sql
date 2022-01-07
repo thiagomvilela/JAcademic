@@ -42,34 +42,46 @@ INSERT INTO 'jacademic'.'student' ('name_student') VALUES ('Vitória Carla Costa
 INSERT INTO 'jacademic'.'student' ('name_student') VALUES ('Wagner Vidal Xavier Da Silva');
 INSERT INTO 'jacademic'.'student' ('name_student') VALUES ('Yuri Pereira');
 
-/* Insert Into - Teacher*/
-
-INSERT INTO 'jacademic'.'student' ('name_student') VALUES ('Anderson Apolinio Lira Queiroz');
-INSERT INTO 'jacademic'.'student' ('name_student') VALUES ('Antônio Correia de Sá Barreto Neto');
-INSERT INTO 'jacademic'.'student' ('name_student') VALUES ('Bruno Falcão de Souza Cartaxo');
-INSERT INTO 'jacademic'.'student' ('name_student') VALUES ('Danilo Farias Soares da Silva');
-INSERT INTO 'jacademic'.'student' ('name_student') VALUES ('Flávio Rosendo da Silva Oliveira');
-INSERT INTO 'jacademic'.'student' ('name_student') VALUES ('Jéssica Priscila Rivas dos Santos');
-INSERT INTO 'jacademic'.'student' ('name_student') VALUES ('Mércio Antônio Oliveira de Andrade');
-
 /* Insert Into - Note*/
 
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('1', '1', '10', '9', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('2', '1', '8.5', '8.5', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('3', '1', '9', '8', 'Aprovado');
-INSERT INTO `jacademic`.`note` ('id_student', 'id_teacher', 'first_note', 'second_note', 'final_note', 'status') VALUES ('4', '1', '5.5', '6', '7.5', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('5', '1', '10', '7.5', 'Aprovado');
-INSERT INTO `jacademic`.`note` ('id_student', 'id_teacher', 'first_note', 'second_note', 'final_note', 'status') VALUES ('6', '1', '5', '4', '6.5', 'Reprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('7', '1', '9.5', '7.5', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'final_note', 'status') VALUES ('8', '1', '6.5', '4', '6', 'Reprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'final_note', 'status') VALUES ('9', '1', '5.5', '7.5', '8', 'Aprovado');
-
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('1', '2', '8.5', '10', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('2', '2', '7.5', '7.5', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('3', '2', '6.5', '7.5', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('4', '2', '7', '8', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'final_note', 'status') VALUES ('5', '2', '5.5', '7.5', '6.5', 'Reprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'final_note', 'status') VALUES ('6', '2', '3.5', '2.5', '7', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('7', '2', '4.5', '10', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('8', '2', '6', '8', 'Aprovado');
-INSERT INTO 'jacademic'.'note' ('id_student', 'id_teacher', 'first_note', 'second_note', 'status') VALUES ('9', '2', '10', '9', 'Aprovado');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('1');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('2');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('3');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('4');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('5');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('6');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('7');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('8');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('9');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('10');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('11');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('12');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('13');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('14');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('15');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('16');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('17');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('18');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('19');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('20');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('21');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('22');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('23');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('24');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('25');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('26');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('27');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('28');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('29');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('30');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('31');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('32');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('33');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('34');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('35');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('36');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('37');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('38');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('39');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('40');
+INSERT INTO `jacademic`.`note` (`id_student`) VALUES ('41');
