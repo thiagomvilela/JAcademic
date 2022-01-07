@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import connection.ConnectionFactory;
 import models.bean.Student;
+import models.service.Helper;
 
 public class AcademicDAO 
 {    
@@ -51,27 +52,7 @@ public class AcademicDAO
             studentDAO.addStudent(new Student("Samantha Araújo"));
             studentDAO.addStudent(new Student("Felipe Santos"));            
         }
-    }
-
-    public void DeleteDatabase()
-    {
-        try 
-        {
-            statement = connectionDb.prepareStatement("DROP DATABASE IF EXISTS " + nameDatabase);
-            statement.executeUpdate();
-
-            System.out.println("Banco deletado com Sucesso: " + nameDatabase);
-        } 
-        catch (SQLException e) 
-        {
-            System.out.println("Erro ao deletar o Banco de dados: " + nameDatabase + "\nERRO: " + e);
-        } 
-        finally 
-        {
-            ConnectionFactory.closeConnectionDataBase(connectionDb, statement);
-        } 
-
-    }
+    }    
 
     public String getNameDatabase()
     {
@@ -125,7 +106,7 @@ public class AcademicDAO
         }
     }
 
-    private void createTableNote() 
+    private void createTables() 
     {        
         try 
         {
@@ -133,9 +114,7 @@ public class AcademicDAO
             connectionDb = ConnectionFactory.getConnectionDataBase();
             useDatabase();
 
-            var sql = new StringBuilder();
-
-            sql.append("CREATE TABLE IF NOT EXISTS NOTE (ID_STUDENT INT NOT NULL, FIRST_NOTE DECIMAL(4,2), SECOND_NOTE DECIMAL(4,2), RECUPERATION_NOTE DECIMAL(4,2), STATUS VARCHAR(20) DEFAULT \"Cursando\", FOREIGN KEY (ID_STUDENT) REFERENCES STUDENT(ID_STUDENT), PRIMARY KEY (ID_STUDENT));");
+            String sql = Helper.lerScriptSQL("");
 
             statement = connectionDb.prepareStatement(sql.toString());
             statement.executeUpdate();
@@ -163,5 +142,19 @@ public class AcademicDAO
         {
             System.out.println("Erro: use " + nameDatabase + ": " + e);
         }
+    }
+
+    public void DeleteDatabase() {
+        try {
+            statement = connectionDb.prepareStatement("DROP DATABASE IF EXISTS " + nameDatabase);
+            statement.executeUpdate();
+
+            System.out.println("Banco deletado com Sucesso: " + nameDatabase);
+        } catch (SQLException e) {
+            System.out.println("Erro ao deletar o Banco de dados: " + nameDatabase + "\nERRO: " + e);
+        } finally {
+            ConnectionFactory.closeConnectionDataBase(connectionDb, statement);
+        }
+
     }
 }

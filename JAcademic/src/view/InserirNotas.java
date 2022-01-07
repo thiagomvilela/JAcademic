@@ -102,6 +102,8 @@ public class InserirNotas extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -116,10 +118,10 @@ public class InserirNotas extends JFrame {
 
 	/**
 	 * Create the frame.
-	 */
+	*/
 	public InserirNotas() {
 		
-		super("Sistema de Gestão de Docentes");
+		super("Sistema de Gestï¿½o de Docentes");
 		setBackground(new Color(0, 255, 0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -137,7 +139,7 @@ public class InserirNotas extends JFrame {
             mascaraNotas = new MaskFormatter("##.##");
         }
         catch(ParseException excp) {
-            System.err.println("Erro na formatação: " + excp.getMessage());
+            System.err.println("Erro na formataï¿½ï¿½o: " + excp.getMessage());
             System.exit(-1);
         }
 		
