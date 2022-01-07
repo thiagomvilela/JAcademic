@@ -8,7 +8,6 @@ public class App {
         AcademicDAO.getInstance().DeleteDatabase();
         AcademicDAO.getInstance().initializeDatabase();      
 
-        mostrarAlunosENotas();
     }
 
     public static void mostrarAlunosENotas()
@@ -19,6 +18,14 @@ public class App {
         {
             System.out.println(aluno.getNome());
         }
+    }
+
+    //Ainda em teste
+    public static void buscarPorMatricula()
+    {
+        var aluno = AcademicDAO.getInstance().findByMatricula(5);
+        System.out.println(aluno.getNome());
+
     }
     
 }

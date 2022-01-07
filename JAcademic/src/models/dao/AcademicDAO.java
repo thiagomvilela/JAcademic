@@ -88,7 +88,8 @@ public class AcademicDAO {
         }
     }    
 
-    public List<Aluno> findAll() {
+    public List<Aluno> findAll() 
+    {
 
         var listalunos = new ArrayList<Aluno>();
 
@@ -127,6 +128,41 @@ public class AcademicDAO {
 
         return listalunos;
 
+    }
+
+    public Aluno findByMatricula(int matricula)
+    {
+        var aluno = new Aluno();
+
+        try 
+        {
+            connectionDb = ConnectionFactory.getConnectionDataBase();
+
+            useDatabase();            
+
+            statement = connectionDb.prepareStatement("SELECT * FROM alunos WHERE matricula = " + matricula);
+            statement.executeQuery();
+
+            result = statement.executeQuery();
+            
+            aluno.setMatricula(result.getInt("matricula"));
+            aluno.setNome(result.getString("nome"));
+            aluno.setPrimeira_nota(result.getDouble("primeira_nota"));
+            aluno.setSegunda_nota(result.getDouble("segunda_nota"));
+            aluno.setNota_recuperacao(result.getDouble("nota_recuperacao"));
+            aluno.setSituacao(result.getString("situacao"));
+
+        } 
+        catch (SQLException e) 
+        {
+            System.out.println("Erro no findByMatricula: " + e);
+        } 
+        finally 
+        {
+            ConnectionFactory.closeConnectionDataBase(connectionDb, statement,result);
+        }
+
+        return aluno;
     }
 
     public void DeleteDatabase() 
