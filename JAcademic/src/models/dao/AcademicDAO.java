@@ -2,15 +2,22 @@ package models.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import connection.ConnectionFactory;
+import models.bean.Aluno;
 import models.service.Helper;
 
 public class AcademicDAO {
+    
     private static boolean isInitialize = true;
     private final String nameDatabase;
     private Connection connectionDb;
-    private PreparedStatement statement;
+    private PreparedStatement statement;    
+    private ResultSet result;
 
     // Singleton
     private static final AcademicDAO INSTANCE = new AcademicDAO();
@@ -30,7 +37,7 @@ public class AcademicDAO {
 
         if (isInitialize) 
         {
-            createTableStudents();
+            createTablealunos();
         }
     }
     
@@ -55,7 +62,7 @@ public class AcademicDAO {
         }
     }
 
-    private void createTableStudents() {
+    private void createTablealunos() {
         try 
         {
 
@@ -63,7 +70,10 @@ public class AcademicDAO {
 
             useDatabase();            
 
-            statement = connectionDb.prepareStatement(Helper.lerScriptSQL("InitializeDatabase.sql").toString());
+            statement = connectionDb.prepareStatement(Helper.lerScriptSQL("InitializeDatabase.sql").toString());            
+            statement.executeUpdate();
+
+            statement = connectionDb.prepareStatement(Helper.lerScriptSQL("insertAlunos.sql").toString());
             statement.executeUpdate();
 
             System.out.println("Table Alunos criada com Sucesso");
@@ -77,6 +87,47 @@ public class AcademicDAO {
             ConnectionFactory.closeConnectionDataBase(connectionDb, statement);
         }
     }    
+
+    public List<Aluno> findAll() {
+
+        var listalunos = new ArrayList<Aluno>();
+
+        try 
+        {
+            connectionDb = ConnectionFactory.getConnectionDataBase();
+
+            statement = connectionDb.prepareStatement("use " + nameDatabase + ";");
+            statement.executeUpdate();
+
+            statement = connectionDb.prepareStatement("SELECT * from alunos");
+            result = statement.executeQuery();
+
+            while (result.next()) 
+            {
+                var aluno = new Aluno();
+
+                aluno.setMatricula(result.getInt("matricula"));
+                aluno.setNome(result.getString("nome"));
+                aluno.setPrimeira_nota(result.getDouble("primeira_nota"));
+                aluno.setSegunda_nota(result.getDouble("segunda_nota"));
+                aluno.setNota_recuperacao(result.getDouble("nota_recuperacao"));
+                aluno.setSituacao(result.getString("situacao"));             
+
+                listalunos.add(aluno);
+            }
+        } 
+        catch (SQLException e) 
+        {
+            System.out.println("Erro ao listar Alunos: " + e);
+        } 
+        finally 
+        {
+            ConnectionFactory.closeConnectionDataBase(connectionDb, statement, result);
+        }
+
+        return listalunos;
+
+    }
 
     public void DeleteDatabase() 
     {
