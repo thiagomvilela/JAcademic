@@ -1,54 +1,40 @@
 package models.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
-
-import connection.ConnectionFactory;
-import models.dao.AcademicDAO;
 
 public class Helper {
     
-    public static String lerScriptSQL(String caminhoDoArquivo)
+    public static StringBuilder lerScriptSQL(String nomeDoArquivo)
     {
-        var sql = new String();
+        var sql = new StringBuilder();
 
-        Path path = Paths.get(caminhoDoArquivo);
+        String basePath = new File("").getAbsolutePath();
+        basePath = basePath.concat("\\src\\script\\" + nomeDoArquivo);
+
+        Path path = Paths.get(basePath);
     
         try 
         {
             List<String> linhasArquivo = Files.readAllLines(path);
 
             for (String linha : linhasArquivo) {
-                sql += " " + linha + " ";
+
+                sql.append(linha);
+
             }
 
         } catch (IOException e) {
             
-            System.out.println("Erro na leitura do arquivo: " + caminhoDoArquivo + " => " + e);
+            System.out.println("Erro na leitura do arquivo: " + nomeDoArquivo + " => " + e);
         }
 
         
         return sql;
     }
-
-    private void useDatabase() 
-    {
-        try 
-        {
-            var connectionDb = ConnectionFactory.getConnectionDataBase();
-
-            PreparedStatement statement = connectionDb.prepareStatement("use " + AcademicDAO.getInstance());
-
-            statement.executeUpdate();
-        } 
-        catch (SQLException e) 
-        {
-            System.out.println("Erro: use " + AcademicDAO.getInstance() + ": " + e);
-        }
-    }
+    
 }

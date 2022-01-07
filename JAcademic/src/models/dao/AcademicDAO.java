@@ -6,18 +6,16 @@ import java.sql.SQLException;
 import connection.ConnectionFactory;
 import models.service.Helper;
 
-public class AcademicDAO 
-{    
+public class AcademicDAO {
     private static boolean isInitialize = true;
-    private final String nameDatabase; 
+    private final String nameDatabase;
     private Connection connectionDb;
-    private PreparedStatement statement;       
+    private PreparedStatement statement;
 
     // Singleton
     private static final AcademicDAO INSTANCE = new AcademicDAO();
 
-    public static AcademicDAO getInstance()
-    {
+    public static AcademicDAO getInstance() {
         return INSTANCE;
     }
 
@@ -26,52 +24,96 @@ public class AcademicDAO
         nameDatabase = "dbAcademicNotes";
     }
 
-    public void initializeDatabase()
-    {        
-        if(isInitialize)
-        {           
-            try 
-            {
-                var sql = "CREATE DATABASE " + nameDatabase
-                        + " default character set utf8 default collate utf8_general_ci; ";
+    public void initializeDatabase() {
 
-                sql = Helper.lerScriptSQL(" ");
+        createDataBase();
 
-                connectionDb = ConnectionFactory.getConnectionDataBase();
-                statement = connectionDb.prepareStatement(sql);
+        if (isInitialize) 
+        {
+            createTableStudents();
+        }
+    }
+    
+    private void createDataBase() 
+    {
+        try 
+        {
+            connectionDb = ConnectionFactory.getConnectionDataBase();
+            statement = connectionDb.prepareStatement("CREATE DATABASE " + nameDatabase + ";");
+            statement.executeUpdate();
 
-                statement.executeUpdate();
+            System.out.println("Banco Criado com Sucesso: " + nameDatabase);
+        } 
+        catch (SQLException e) 
+        {
+            // SE DATA EXISTS NÂO INICIAREMOS ELE NOVAMENTE
+            isInitialize = false;
+        } 
+        finally 
+        {
+            ConnectionFactory.closeConnectionDataBase(connectionDb, statement);
+        }
+    }
 
-                System.out.println("Banco Criado com Sucesso: " + nameDatabase);
-            } 
-            catch (SQLException e) 
-            {
-                // SE DATA EXISTS NÂO INICIAREMOS ELE NOVAMENTE
-                isInitialize = false;
-            } 
-            finally 
-            {
-                ConnectionFactory.closeConnectionDataBase(connectionDb, statement);
-            }  
+    private void createTableStudents() {
+        try 
+        {
+
+            connectionDb = ConnectionFactory.getConnectionDataBase();
+
+            useDatabase();            
+
+            statement = connectionDb.prepareStatement(Helper.lerScriptSQL("InitializeDatabase.sql").toString());
+            statement.executeUpdate();
+
+            System.out.println("Table Alunos criada com Sucesso");
+        } 
+        catch (SQLException e) 
+        {
+            System.out.println("Erro ao criar Table Alunos: " + e);
+        } 
+        finally 
+        {
+            ConnectionFactory.closeConnectionDataBase(connectionDb, statement);
         }
     }    
 
-    public String getNameDatabase()
+    public void DeleteDatabase() 
     {
-        return nameDatabase;
-    }    
-
-    public void DeleteDatabase() {
-        try {
+        try 
+        {
             statement = connectionDb.prepareStatement("DROP DATABASE IF EXISTS " + nameDatabase);
             statement.executeUpdate();
 
             System.out.println("Banco deletado com Sucesso: " + nameDatabase);
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) 
+        {
             System.out.println("Erro ao deletar o Banco de dados: " + nameDatabase + "\nERRO: " + e);
-        } finally {
+        } 
+        finally 
+        {
             ConnectionFactory.closeConnectionDataBase(connectionDb, statement);
         }
 
     }
+
+    public String getNameDatabase() 
+    {
+        return nameDatabase;
+    }
+
+    private void useDatabase() {
+        try 
+        {
+            statement = connectionDb.prepareStatement("use " + nameDatabase);
+            statement.executeUpdate();
+        } 
+        catch (SQLException e) 
+        {
+            System.out.println("Erro: use " + nameDatabase + ": " + e);
+        }
+    }
+
+
 }

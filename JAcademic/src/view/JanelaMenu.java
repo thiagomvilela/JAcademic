@@ -1,20 +1,16 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.MaskFormatter;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 public class JanelaMenu extends JFrame {
 
@@ -41,7 +37,7 @@ public class JanelaMenu extends JFrame {
 	 */
 	public JanelaMenu() {
 		
-		super("Sistema de Gestão de Docentes");
+		super("Sistema de Gestï¿½o de Docentes");
 		setBackground(new Color(0, 255, 0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

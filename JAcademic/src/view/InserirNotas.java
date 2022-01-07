@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -16,9 +15,7 @@ import java.text.ParseException;
 
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
-import javax.swing.JTable;
 
 public class InserirNotas extends JFrame {
 
