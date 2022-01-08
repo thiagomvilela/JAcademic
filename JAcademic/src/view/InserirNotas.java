@@ -2,46 +2,36 @@ package view;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.util.ArrayList;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
-
-import java.awt.Font;
-import java.text.ParseException;
-
-import javax.swing.JTextPane;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+<<<<<<< Updated upstream
 import javax.swing.text.MaskFormatter;
+=======
+import javax.swing.JTextPane;
+import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
+
+import models.dao.AcademicDAO;
+import models.dao.StudentDAO;
+>>>>>>> Stashed changes
 
 public class InserirNotas extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldAv1_1;
 	private JTextField textFieldRecuperacao1;
-	private JTextField textFieldMedia1;
+	private JTextField textFieldSituacao1;
 	private JTextField textFieldAv2_1;
-	private JTextPane textPaneMatricula1;
-	private JTextPane textPaneAluno1;
-	private JTextPane textPaneMatricula2;
-	private JTextPane textPaneAluno2;
-	private JTextPane textPaneMatricula3;
-	private JTextPane textPaneAluno3;
-	private JTextPane textPaneMatricula4;
-	private JTextPane textPaneAluno4;
-	private JTextPane textPaneMatricula5;
-	private JTextPane textPaneAluno5;
-	private JTextPane textPaneMatricula6;
-	private JTextPane textPaneAluno6;
-	private JTextPane textPaneMatricula7;
-	private JTextPane textPaneAluno7;
-	private JTextPane textPaneMatricula8;
-	private JTextPane textPaneAluno8;
-	private JTextPane textPaneMatricula9;
-	private JTextPane textPaneAluno9;
 	private JTextField textFieldAv1_2;
 	private JTextField textFieldAv2_2;
 	private JTextField textFieldAv1_3;
@@ -66,20 +56,14 @@ public class InserirNotas extends JFrame {
 	private JTextField textFieldRecuperacao7;
 	private JTextField textFieldRecuperacao8;
 	private JTextField textFieldRecuperacao9;
-	private JTextField textFieldMedia2;
-	private JTextField textFieldMedia3;
-	private JTextField textFieldMedia4;
-	private JTextField textFieldMedia5;
-	private JTextField textFieldMedia6;
-	private JTextField textFieldMedia7;
-	private JTextField textFieldMedia8;
-	private JTextField textFieldMedia9;
-	private JTextPane textPaneMatricula10;
-	private JTextPane textPaneMatricula11;
-	private JTextPane textPaneMatricula12;
-	private JTextPane textPaneAluno10;
-	private JTextPane textPaneAluno11;
-	private JTextPane textPaneAluno12;
+	private JTextField textFieldSituacao2;
+	private JTextField textFieldSituacao3;
+	private JTextField textFieldSituacao4;
+	private JTextField textFieldSituacao5;
+	private JTextField textFieldSituacao6;
+	private JTextField textFieldSituacao7;
+	private JTextField textFieldSituacao8;
+	private JTextField textFieldSituacao9;
 	private JTextField textFieldAv1_10;
 	private JTextField textFieldAv1_11;
 	private JTextField textFieldAv1_12;
@@ -89,18 +73,49 @@ public class InserirNotas extends JFrame {
 	private JTextField textFieldRecuperacao10;
 	private JTextField textFieldRecuperacao11;
 	private JTextField textFieldRecuperacao12;
-	private JTextField textFieldMedia10;
-	private JTextField textFieldMedia12;
-	private JTextField textFieldMedia11;
+	private JTextField textFieldSituacao10;
+	private JTextField textFieldSituacao12;
+	private JTextField textFieldSituacao11;
 	private JLabel lbInformacoes;
 	private JButton btnSalvar;
+	private JTextField textFieldMatricula1;
+	private JTextField textFieldMatricula2;
+	private JTextField textFieldMatricula3;
+	private JTextField textFieldMatricula4;
+	private JTextField textFieldMatricula5;
+	private JTextField textFieldMatricula6;
+	private JTextField textFieldMatricula7;
+	private JTextField textFieldMatricula8;
+	private JTextField textFieldMatricula9;
+	private JTextField textFieldMatricula10;
+	private JTextField textFieldMatricula11;
+	private JTextField textFieldMatricula12;
+	private JTextField textFieldAluno1;
+	private JTextField textFieldAluno2;
+	private JTextField textFieldAluno3;
+	private JTextField textFieldAluno4;
+	private JTextField textFieldAluno5;
+	private JTextField textFieldAluno6;
+	private JTextField textFieldAluno7;
+	private JTextField textFieldAluno8;
+	private JTextField textFieldAluno9;
+	private JTextField textFieldAluno10;
+	private JTextField textFieldAluno11;
+	private JTextField textFieldAluno12;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+<<<<<<< Updated upstream
 
 		
+=======
+		
+		AcademicDAO.getInstance().DeleteDatabase();
+        AcademicDAO.getInstance().initializeDatabase();
+        
+>>>>>>> Stashed changes
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -159,11 +174,12 @@ public class InserirNotas extends JFrame {
 		textFieldRecuperacao1.setBounds(571, 156, 155, 31);
 		contentPane.add(textFieldRecuperacao1);
 		
-		textFieldMedia1 = new JTextField();
-		textFieldMedia1.setForeground(Color.BLACK);
-		textFieldMedia1.setColumns(10);
-		textFieldMedia1.setBounds(725, 156, 105, 31);
-		contentPane.add(textFieldMedia1);
+		textFieldSituacao1 = new JTextField();
+		textFieldSituacao1.setEditable(false);
+		textFieldSituacao1.setForeground(Color.BLACK);
+		textFieldSituacao1.setColumns(10);
+		textFieldSituacao1.setBounds(725, 156, 105, 31);
+		contentPane.add(textFieldSituacao1);
 		
 		textFieldAv2_1 = new JTextField();
 		textFieldAv2_1 = new JFormattedTextField(mascaraNotas);
@@ -171,78 +187,6 @@ public class InserirNotas extends JFrame {
 		textFieldAv2_1.setColumns(10);
 		textFieldAv2_1.setBounds(501, 156, 71, 31);
 		contentPane.add(textFieldAv2_1);
-		
-		textPaneMatricula1 = new JTextPane();
-		textPaneMatricula1.setBounds(49, 156, 115, 31);
-		contentPane.add(textPaneMatricula1);
-		
-		textPaneAluno1 = new JTextPane();
-		textPaneAluno1.setBounds(165, 156, 268, 31);
-		contentPane.add(textPaneAluno1);
-		
-		textPaneMatricula2 = new JTextPane();
-		textPaneMatricula2.setBounds(49, 189, 115, 31);
-		contentPane.add(textPaneMatricula2);
-		
-		textPaneAluno2 = new JTextPane();
-		textPaneAluno2.setBounds(165, 189, 268, 31);
-		contentPane.add(textPaneAluno2);
-		
-		textPaneMatricula3 = new JTextPane();
-		textPaneMatricula3.setBounds(49, 223, 115, 31);
-		contentPane.add(textPaneMatricula3);
-		
-		textPaneAluno3 = new JTextPane();
-		textPaneAluno3.setBounds(165, 223, 268, 31);
-		contentPane.add(textPaneAluno3);
-		
-		textPaneMatricula4 = new JTextPane();
-		textPaneMatricula4.setBounds(49, 258, 115, 31);
-		contentPane.add(textPaneMatricula4);
-		
-		textPaneAluno4 = new JTextPane();
-		textPaneAluno4.setBounds(165, 258, 268, 31);
-		contentPane.add(textPaneAluno4);
-		
-		textPaneMatricula5 = new JTextPane();
-		textPaneMatricula5.setBounds(49, 293, 115, 31);
-		contentPane.add(textPaneMatricula5);
-		
-		textPaneAluno5 = new JTextPane();
-		textPaneAluno5.setBounds(165, 293, 268, 31);
-		contentPane.add(textPaneAluno5);
-		
-		textPaneMatricula6 = new JTextPane();
-		textPaneMatricula6.setBounds(49, 326, 115, 31);
-		contentPane.add(textPaneMatricula6);
-		
-		textPaneAluno6 = new JTextPane();
-		textPaneAluno6.setBounds(165, 326, 268, 31);
-		contentPane.add(textPaneAluno6);
-		
-		textPaneMatricula7 = new JTextPane();
-		textPaneMatricula7.setBounds(49, 359, 115, 31);
-		contentPane.add(textPaneMatricula7);
-		
-		textPaneAluno7 = new JTextPane();
-		textPaneAluno7.setBounds(165, 359, 268, 31);
-		contentPane.add(textPaneAluno7);
-		
-		textPaneMatricula8 = new JTextPane();
-		textPaneMatricula8.setBounds(49, 393, 115, 31);
-		contentPane.add(textPaneMatricula8);
-		
-		textPaneAluno8 = new JTextPane();
-		textPaneAluno8.setBounds(165, 393, 268, 31);
-		contentPane.add(textPaneAluno8);
-		
-		textPaneMatricula9 = new JTextPane();
-		textPaneMatricula9.setBounds(49, 428, 115, 31);
-		contentPane.add(textPaneMatricula9);
-		
-		textPaneAluno9 = new JTextPane();
-		textPaneAluno9.setBounds(165, 428, 268, 31);
-		contentPane.add(textPaneAluno9);
 		
 		textFieldAv1_2 = new JTextField();
 		textFieldAv1_2 = new JFormattedTextField(mascaraNotas);
@@ -371,7 +315,7 @@ public class InserirNotas extends JFrame {
 		contentPane.add(textFieldRecuperacao3);
 		
 		textFieldRecuperacao4 = new JTextField();
-		textFieldRecuperacao1 = new JFormattedTextField(mascaraNotas);
+		textFieldRecuperacao4 = new JFormattedTextField(mascaraNotas);
 		textFieldRecuperacao4.setForeground(Color.BLACK);
 		textFieldRecuperacao4.setColumns(10);
 		textFieldRecuperacao4.setBounds(571, 258, 155, 31);
@@ -412,77 +356,61 @@ public class InserirNotas extends JFrame {
 		textFieldRecuperacao9.setBounds(571, 428, 155, 31);
 		contentPane.add(textFieldRecuperacao9);
 		
-		textFieldMedia2 = new JTextField();
-		textFieldMedia2.setForeground(Color.BLACK);
-		textFieldMedia2.setColumns(10);
-		textFieldMedia2.setBounds(725, 189, 105, 31);
-		contentPane.add(textFieldMedia2);
+		textFieldSituacao2 = new JTextField();
+		textFieldSituacao2.setEditable(false);
+		textFieldSituacao2.setForeground(Color.BLACK);
+		textFieldSituacao2.setColumns(10);
+		textFieldSituacao2.setBounds(725, 189, 105, 31);
+		contentPane.add(textFieldSituacao2);
 		
-		textFieldMedia3 = new JTextField();
-		textFieldMedia3.setForeground(Color.BLACK);
-		textFieldMedia3.setColumns(10);
-		textFieldMedia3.setBounds(725, 223, 105, 31);
-		contentPane.add(textFieldMedia3);
+		textFieldSituacao3 = new JTextField();
+		textFieldSituacao3.setEditable(false);
+		textFieldSituacao3.setForeground(Color.BLACK);
+		textFieldSituacao3.setColumns(10);
+		textFieldSituacao3.setBounds(725, 223, 105, 31);
+		contentPane.add(textFieldSituacao3);
 		
-		textFieldMedia4 = new JTextField();
-		textFieldMedia4.setForeground(Color.BLACK);
-		textFieldMedia4.setColumns(10);
-		textFieldMedia4.setBounds(725, 258, 105, 31);
-		contentPane.add(textFieldMedia4);
+		textFieldSituacao4 = new JTextField();
+		textFieldSituacao4.setEditable(false);
+		textFieldSituacao4.setForeground(Color.BLACK);
+		textFieldSituacao4.setColumns(10);
+		textFieldSituacao4.setBounds(725, 258, 105, 31);
+		contentPane.add(textFieldSituacao4);
 		
-		textFieldMedia5 = new JTextField();
-		textFieldMedia5.setForeground(Color.BLACK);
-		textFieldMedia5.setColumns(10);
-		textFieldMedia5.setBounds(725, 293, 105, 31);
-		contentPane.add(textFieldMedia5);
+		textFieldSituacao5 = new JTextField();
+		textFieldSituacao5.setEditable(false);
+		textFieldSituacao5.setForeground(Color.BLACK);
+		textFieldSituacao5.setColumns(10);
+		textFieldSituacao5.setBounds(725, 293, 105, 31);
+		contentPane.add(textFieldSituacao5);
 		
-		textFieldMedia6 = new JTextField();
-		textFieldMedia6.setForeground(Color.BLACK);
-		textFieldMedia6.setColumns(10);
-		textFieldMedia6.setBounds(725, 326, 105, 31);
-		contentPane.add(textFieldMedia6);
+		textFieldSituacao6 = new JTextField();
+		textFieldSituacao6.setEditable(false);
+		textFieldSituacao6.setForeground(Color.BLACK);
+		textFieldSituacao6.setColumns(10);
+		textFieldSituacao6.setBounds(725, 326, 105, 31);
+		contentPane.add(textFieldSituacao6);
 		
-		textFieldMedia7 = new JTextField();
-		textFieldMedia7.setForeground(Color.BLACK);
-		textFieldMedia7.setColumns(10);
-		textFieldMedia7.setBounds(725, 359, 105, 31);
-		contentPane.add(textFieldMedia7);
+		textFieldSituacao7 = new JTextField();
+		textFieldSituacao7.setEditable(false);
+		textFieldSituacao7.setForeground(Color.BLACK);
+		textFieldSituacao7.setColumns(10);
+		textFieldSituacao7.setBounds(725, 359, 105, 31);
+		contentPane.add(textFieldSituacao7);
 		
-		textFieldMedia8 = new JTextField();
-		textFieldMedia8.setForeground(Color.BLACK);
-		textFieldMedia8.setColumns(10);
-		textFieldMedia8.setBounds(725, 393, 105, 31);
-		contentPane.add(textFieldMedia8);
+		textFieldSituacao8 = new JTextField();
+		textFieldSituacao8.setEditable(false);
+		textFieldSituacao8.setForeground(Color.BLACK);
+		textFieldSituacao8.setColumns(10);
+		textFieldSituacao8.setBounds(725, 393, 105, 31);
+		contentPane.add(textFieldSituacao8);
 		
-		textFieldMedia9 = new JTextField();
-		textFieldMedia9.setForeground(Color.BLACK);
-		textFieldMedia9.setColumns(10);
-		textFieldMedia9.setBounds(725, 428, 105, 31);
-		contentPane.add(textFieldMedia9);
-		
-		textPaneMatricula10 = new JTextPane();
-		textPaneMatricula10.setBounds(49, 462, 115, 31);
-		contentPane.add(textPaneMatricula10);
-		
-		textPaneMatricula11 = new JTextPane();
-		textPaneMatricula11.setBounds(49, 496, 115, 31);
-		contentPane.add(textPaneMatricula11);
-		
-		textPaneMatricula12 = new JTextPane();
-		textPaneMatricula12.setBounds(49, 530, 115, 31);
-		contentPane.add(textPaneMatricula12);
-		
-		textPaneAluno10 = new JTextPane();
-		textPaneAluno10.setBounds(165, 462, 268, 31);
-		contentPane.add(textPaneAluno10);
-		
-		textPaneAluno11 = new JTextPane();
-		textPaneAluno11.setBounds(165, 496, 268, 31);
-		contentPane.add(textPaneAluno11);
-		
-		textPaneAluno12 = new JTextPane();
-		textPaneAluno12.setBounds(165, 530, 268, 31);
-		contentPane.add(textPaneAluno12);
+		textFieldSituacao9 = new JTextField();
+		textFieldSituacao9.setEditable(false);
+		textFieldSituacao9.setForeground(Color.BLACK);
+		textFieldSituacao9.setColumns(10);
+		textFieldSituacao9.setBounds(725, 428, 105, 31);
+		contentPane.add(textFieldSituacao9);
 		
 		textFieldAv1_10 = new JTextField();
 		textFieldAv1_10 = new JFormattedTextField(mascaraNotas);
@@ -547,25 +475,28 @@ public class InserirNotas extends JFrame {
 		textFieldRecuperacao12.setBounds(571, 530, 155, 31);
 		contentPane.add(textFieldRecuperacao12);
 		
-		textFieldMedia10 = new JTextField();
-		textFieldMedia10.setForeground(Color.BLACK);
-		textFieldMedia10.setColumns(10);
-		textFieldMedia10.setBounds(725, 462, 105, 31);
-		contentPane.add(textFieldMedia10);
+		textFieldSituacao10 = new JTextField();
+		textFieldSituacao10.setEditable(false);
+		textFieldSituacao10.setForeground(Color.BLACK);
+		textFieldSituacao10.setColumns(10);
+		textFieldSituacao10.setBounds(725, 462, 105, 31);
+		contentPane.add(textFieldSituacao10);
 		
-		textFieldMedia12 = new JTextField();
-		textFieldMedia12.setForeground(Color.BLACK);
-		textFieldMedia12.setColumns(10);
-		textFieldMedia12.setBounds(725, 530, 105, 31);
-		contentPane.add(textFieldMedia12);
+		textFieldSituacao12 = new JTextField();
+		textFieldSituacao12.setEditable(false);
+		textFieldSituacao12.setForeground(Color.BLACK);
+		textFieldSituacao12.setColumns(10);
+		textFieldSituacao12.setBounds(725, 530, 105, 31);
+		contentPane.add(textFieldSituacao12);
 		
-		textFieldMedia11 = new JTextField();
-		textFieldMedia11.setForeground(Color.BLACK);
-		textFieldMedia11.setColumns(10);
-		textFieldMedia11.setBounds(725, 496, 105, 31);
-		contentPane.add(textFieldMedia11);
+		textFieldSituacao11 = new JTextField();
+		textFieldSituacao11.setEditable(false);
+		textFieldSituacao11.setForeground(Color.BLACK);
+		textFieldSituacao11.setColumns(10);
+		textFieldSituacao11.setBounds(725, 496, 105, 31);
+		contentPane.add(textFieldSituacao11);
 		
-		lbInformacoes = new JLabel("   Matr\u00EDcula                     Aluno                             AV1        AV2        Recupera\u00E7\u00E3o         M\u00E9dia");
+		lbInformacoes = new JLabel("   Matr\u00EDcula                     Aluno                             AV1        AV2        Recupera\u00E7\u00E3o        Situa\u00E7\u00E3o");
 		lbInformacoes.setForeground(new Color(255, 255, 255));
 		lbInformacoes.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 20));
 		lbInformacoes.setBounds(49, 123, 781, 31);
@@ -574,12 +505,168 @@ public class InserirNotas extends JFrame {
 		contentPane.add(lbInformacoes);
 		
 		btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				var listaDeNotas = new ArrayList<String>();
+                var dao = StudentDAO.getInstance();
+
+                var listaDeEstudante = dao.findAll();
+
+                textFieldAv1_1.setText(listaDeEstudante.get(5).getName());
+			}
+		});
+		
 		btnSalvar.setBackground(Color.decode("#008F26"));
 		btnSalvar.setForeground(new Color(255, 255, 255));
 		btnSalvar.setFont(new Font("Calibri", Font.BOLD, 16));
 		
 		btnSalvar.setBounds(395, 585, 122, 45);
 		contentPane.add(btnSalvar);
+		
+		textFieldMatricula1 = new JTextField();
+		textFieldMatricula1.setEditable(false);
+		textFieldMatricula1.setBounds(49, 156, 115, 31);
+		contentPane.add(textFieldMatricula1);
+		textFieldMatricula1.setColumns(10);
+		
+		textFieldMatricula2 = new JTextField();
+		textFieldMatricula2.setEditable(false);
+		textFieldMatricula2.setColumns(10);
+		textFieldMatricula2.setBounds(49, 189, 115, 31);
+		contentPane.add(textFieldMatricula2);
+		
+		textFieldMatricula3 = new JTextField();
+		textFieldMatricula3.setEditable(false);
+		textFieldMatricula3.setColumns(10);
+		textFieldMatricula3.setBounds(49, 223, 115, 31);
+		contentPane.add(textFieldMatricula3);
+		
+		textFieldMatricula4 = new JTextField();
+		textFieldMatricula4.setEditable(false);
+		textFieldMatricula4.setColumns(10);
+		textFieldMatricula4.setBounds(49, 258, 115, 31);
+		contentPane.add(textFieldMatricula4);
+		
+		textFieldMatricula5 = new JTextField();
+		textFieldMatricula5.setEditable(false);
+		textFieldMatricula5.setColumns(10);
+		textFieldMatricula5.setBounds(49, 293, 115, 31);
+		contentPane.add(textFieldMatricula5);
+		
+		textFieldMatricula6 = new JTextField();
+		textFieldMatricula6.setEditable(false);
+		textFieldMatricula6.setColumns(10);
+		textFieldMatricula6.setBounds(49, 326, 115, 31);
+		contentPane.add(textFieldMatricula6);
+		
+		textFieldMatricula7 = new JTextField();
+		textFieldMatricula7.setEditable(false);
+		textFieldMatricula7.setColumns(10);
+		textFieldMatricula7.setBounds(49, 359, 115, 31);
+		contentPane.add(textFieldMatricula7);
+		
+		textFieldMatricula8 = new JTextField();
+		textFieldMatricula8.setEditable(false);
+		textFieldMatricula8.setColumns(10);
+		textFieldMatricula8.setBounds(49, 393, 115, 31);
+		contentPane.add(textFieldMatricula8);
+		
+		textFieldMatricula9 = new JTextField();
+		textFieldMatricula9.setEditable(false);
+		textFieldMatricula9.setColumns(10);
+		textFieldMatricula9.setBounds(49, 428, 115, 31);
+		contentPane.add(textFieldMatricula9);
+		
+		textFieldMatricula10 = new JTextField();
+		textFieldMatricula10.setEditable(false);
+		textFieldMatricula10.setColumns(10);
+		textFieldMatricula10.setBounds(49, 462, 115, 31);
+		contentPane.add(textFieldMatricula10);
+		
+		textFieldMatricula11 = new JTextField();
+		textFieldMatricula11.setEditable(false);
+		textFieldMatricula11.setColumns(10);
+		textFieldMatricula11.setBounds(49, 496, 115, 31);
+		contentPane.add(textFieldMatricula11);
+		
+		textFieldMatricula12 = new JTextField();
+		textFieldMatricula12.setEditable(false);
+		textFieldMatricula12.setColumns(10);
+		textFieldMatricula12.setBounds(49, 530, 115, 31);
+		contentPane.add(textFieldMatricula12);
+		
+		textFieldAluno1 = new JTextField();
+		textFieldAluno1.setEditable(false);
+		textFieldAluno1.setBounds(165, 156, 268, 31);
+		contentPane.add(textFieldAluno1);
+		textFieldAluno1.setColumns(10);
+		
+		textFieldAluno2 = new JTextField();
+		textFieldAluno2.setEditable(false);
+		textFieldAluno2.setColumns(10);
+		textFieldAluno2.setBounds(165, 189, 268, 31);
+		contentPane.add(textFieldAluno2);
+		
+		textFieldAluno3 = new JTextField();
+		textFieldAluno3.setEditable(false);
+		textFieldAluno3.setColumns(10);
+		textFieldAluno3.setBounds(165, 223, 268, 31);
+		contentPane.add(textFieldAluno3);
+		
+		textFieldAluno4 = new JTextField();
+		textFieldAluno4.setEditable(false);
+		textFieldAluno4.setColumns(10);
+		textFieldAluno4.setBounds(165, 258, 268, 31);
+		contentPane.add(textFieldAluno4);
+		
+		textFieldAluno5 = new JTextField();
+		textFieldAluno5.setEditable(false);
+		textFieldAluno5.setColumns(10);
+		textFieldAluno5.setBounds(165, 293, 268, 31);
+		contentPane.add(textFieldAluno5);
+		
+		textFieldAluno6 = new JTextField();
+		textFieldAluno6.setEditable(false);
+		textFieldAluno6.setColumns(10);
+		textFieldAluno6.setBounds(165, 326, 268, 31);
+		contentPane.add(textFieldAluno6);
+		
+		textFieldAluno7 = new JTextField();
+		textFieldAluno7.setEditable(false);
+		textFieldAluno7.setColumns(10);
+		textFieldAluno7.setBounds(165, 359, 268, 31);
+		contentPane.add(textFieldAluno7);
+		
+		textFieldAluno8 = new JTextField();
+		textFieldAluno8.setEditable(false);
+		textFieldAluno8.setColumns(10);
+		textFieldAluno8.setBounds(165, 393, 268, 31);
+		contentPane.add(textFieldAluno8);
+		
+		textFieldAluno9 = new JTextField();
+		textFieldAluno9.setEditable(false);
+		textFieldAluno9.setColumns(10);
+		textFieldAluno9.setBounds(165, 428, 268, 31);
+		contentPane.add(textFieldAluno9);
+		
+		textFieldAluno10 = new JTextField();
+		textFieldAluno10.setEditable(false);
+		textFieldAluno10.setColumns(10);
+		textFieldAluno10.setBounds(165, 462, 268, 31);
+		contentPane.add(textFieldAluno10);
+		
+		textFieldAluno11 = new JTextField();
+		textFieldAluno11.setEditable(false);
+		textFieldAluno11.setColumns(10);
+		textFieldAluno11.setBounds(165, 496, 268, 31);
+		contentPane.add(textFieldAluno11);
+		
+		textFieldAluno12 = new JTextField();
+		textFieldAluno12.setEditable(false);
+		textFieldAluno12.setColumns(10);
+		textFieldAluno12.setBounds(165, 530, 268, 31);
+		contentPane.add(textFieldAluno12);
 
 		
 	}

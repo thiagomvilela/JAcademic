@@ -55,31 +55,33 @@ public class JanelaMenu extends JFrame {
 		btnInserirNotas.setBackground(Color.decode("#DB252C"));
 		btnInserirNotas.setForeground(new Color(255, 255, 255));
 		btnInserirNotas.setFont(new Font("Calibri", Font.BOLD, 20));
+		
 		btnInserirNotas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new InserirNotas().setVisible(true);
 			}
 		});
+		
 		btnInserirNotas.setBounds(554, 244, 221, 92);
 		contentPane.add(btnInserirNotas);
 		
-		JButton btnVisualizarNotas = new JButton("Relat\u00F3rio geral");
+		JButton btnVisualizarNotas = new JButton("Visualizar notas");
 		btnVisualizarNotas.setForeground(new Color(255, 255, 255));
 		btnVisualizarNotas.setContentAreaFilled(false);
 		btnVisualizarNotas.setOpaque(true);
 		btnVisualizarNotas.setBackground(Color.decode("#DB252C"));
 		btnVisualizarNotas.setFont(new Font("Calibri", Font.BOLD, 20));
-		btnVisualizarNotas.setBounds(327, 404, 221, 92);
+		btnVisualizarNotas.setBounds(145, 244, 221, 92);
 		contentPane.add(btnVisualizarNotas);
 		
-		JButton btnRelatorioGeral = new JButton("Visualizar notas");
+		JButton btnRelatorioGeral = new JButton("Relat\u00F3rio Geral");
 		btnRelatorioGeral.setForeground(new Color(255, 255, 255));
 		btnRelatorioGeral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		btnRelatorioGeral.setFont(new Font("Calibri", Font.BOLD, 20));
-		btnRelatorioGeral.setBounds(112, 243, 221, 94);
+		btnRelatorioGeral.setBounds(342, 413, 221, 94);
 		btnRelatorioGeral.setContentAreaFilled(false);
 		btnRelatorioGeral.setOpaque(true);
 		btnRelatorioGeral.setBackground(Color.decode("#DB252C"));
