@@ -52,8 +52,9 @@ public class login {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
-		JLabel user = new JLabel("Usu\u00E1rio");
+		JLabel user = new JLabel("Usuário");
 		user.setBounds(115, 75, 46, 14);
 		frame.getContentPane().add(user);
 		
@@ -92,18 +93,19 @@ public class login {
 		passTxt.setBounds(171, 112, 114, 20);
 		frame.getContentPane().add(passTxt);
 		
-		alterarBt = new JButton("Alterar");
+		alterarBt = new JButton("Alterar/Set login");
 		alterarBt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				var usuario = userTxt.getText();
 				var senha = new String(passTxt.getPassword());
 				
 				if (userTxt.getText()=="" || new String(passTxt.getPassword())=="") {
-									
-					ConnectionFactory.usuario = "root";
-					ConnectionFactory.senha = "root";
-					usuario = ConnectionFactory.usuario;
-					senha = ConnectionFactory.senha;
+					
+					usuario = "root";
+					senha = "root";
+					ConnectionFactory.usuario = usuario;
+					ConnectionFactory.senha = senha;
+					JOptionPane.showMessageDialog(null, "Usuário e senha alterados para root e root", "Alterado para senha padrão", JOptionPane.PLAIN_MESSAGE);
 					
 				}else {
 					usuario = userTxt.getText();
@@ -111,13 +113,14 @@ public class login {
 					ConnectionFactory.usuario = usuario;
 					ConnectionFactory.senha = senha;
 					System.out.println(usuario +" "+ senha);
+					JOptionPane.showMessageDialog(null, "Usuário e senha alterados clique para iniciar o Banco de dados", "Alterado para senha padrão", JOptionPane.PLAIN_MESSAGE);
 				}
 				checkLogin(usuario, senha);
 				
 				
 			}
 		});
-		alterarBt.setBounds(118, 168, 89, 23);
+		alterarBt.setBounds(93, 168, 114, 23);
 		frame.getContentPane().add(alterarBt);
 	}
 	
