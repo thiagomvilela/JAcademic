@@ -10,9 +10,10 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
     //Passando porta de conexão com o banco de dados
-    private static String URL = "jdbc:mysql://localhost";
-    private static final String USER = "root";
-    private static final String PASSWORD = "sidi2022";
+	
+    private static final String URL = "jdbc:mysql://localhost";
+    public static String usuario;
+    public static String senha;
 
     //Not Instance class
     private ConnectionFactory(){}
@@ -21,7 +22,7 @@ public class ConnectionFactory {
         
         try 
         {
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+            return DriverManager.getConnection(URL, usuario, senha);
         } 
         
         catch ( SQLException e) 

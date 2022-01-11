@@ -122,7 +122,7 @@ public class login {
 	}
 	
 	public boolean checkLogin(String login, String senha) {
-		return login.equals(ConnectionFactory.USER) && senha.equals(ConnectionFactory.PASSWORD);
+		return login.equals(ConnectionFactory.usuario) && senha.equals(ConnectionFactory.senha);
 	}
 	
 }

@@ -6,24 +6,14 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-<<<<<<< Updated upstream
-import javax.swing.text.MaskFormatter;
-=======
-import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
-
-import models.dao.AcademicDAO;
-import models.dao.StudentDAO;
->>>>>>> Stashed changes
 
 public class InserirNotas extends JFrame {
 
@@ -107,15 +97,7 @@ public class InserirNotas extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-<<<<<<< Updated upstream
 
-		
-=======
-		
-		AcademicDAO.getInstance().DeleteDatabase();
-        AcademicDAO.getInstance().initializeDatabase();
-        
->>>>>>> Stashed changes
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -508,12 +490,8 @@ public class InserirNotas extends JFrame {
 		btnSalvar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				var listaDeNotas = new ArrayList<String>();
-                var dao = StudentDAO.getInstance();
-
-                var listaDeEstudante = dao.findAll();
-
-                textFieldAv1_1.setText(listaDeEstudante.get(5).getName());
+				
+				
 			}
 		});
 		
