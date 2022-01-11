@@ -144,6 +144,7 @@ public class AcademicDAO {
             statement.executeQuery();
 
             result = statement.executeQuery();
+            result.next();
             
             aluno.setMatricula(result.getInt("matricula"));
             aluno.setNome(result.getString("nome"));

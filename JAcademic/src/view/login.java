@@ -7,7 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.mysql.cj.x.protobuf.MysqlxConnection.Close;
+
 import connection.ConnectionFactory;
+import models.dao.AcademicDAO;
 
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
@@ -24,30 +27,40 @@ public class login {
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
+			public void run() 
+			{
+				try 
+				{
 					login window = new login();
 					window.frame.setVisible(true);
-				} catch (Exception e) {
+				} 
+				catch (Exception e) 
+				{
 					e.printStackTrace();
 				}
 			}
 		});
+		
 	}
 
 	/**
 	 * Create the application.
 	 */
 	public login() {
+		
 		initialize();
+		
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,6 +87,10 @@ public class login {
 				if(checkLogin(userTxt.getText(), new String(passTxt.getPassword()))) {
 					
 					JOptionPane.showMessageDialog(null, "Bem vindo ao banco de dados!", "Login", JOptionPane.PLAIN_MESSAGE);
+					
+					//Deletando banco de dados !
+					AcademicDAO.getInstance().DeleteDatabase();
+					AcademicDAO.getInstance().initializeDatabase();
 					
 					new JanelaMenu().setVisible(true);
 					
@@ -115,13 +132,16 @@ public class login {
 					System.out.println(usuario +" "+ senha);
 					JOptionPane.showMessageDialog(null, "Usuário e senha alterados clique para iniciar o Banco de dados", "Alterado para senha padrão", JOptionPane.PLAIN_MESSAGE);
 				}
+				
 				checkLogin(usuario, senha);
 				
 				
 			}
 		});
+		
 		alterarBt.setBounds(93, 168, 114, 23);
 		frame.getContentPane().add(alterarBt);
+		
 	}
 	
 	public boolean checkLogin(String login, String senha) {

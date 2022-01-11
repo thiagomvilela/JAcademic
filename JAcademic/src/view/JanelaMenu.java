@@ -47,25 +47,18 @@ public class JanelaMenu extends JFrame {
 		contentPane.setBackground(Color.decode("#25DB55"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(null);		
 		
-		JButton btnInserirNotas = new JButton("Inserir notas");
-		btnInserirNotas.setContentAreaFilled(false);
-		btnInserirNotas.setOpaque(true);
-		btnInserirNotas.setBackground(Color.decode("#DB252C"));
-		btnInserirNotas.setForeground(new Color(255, 255, 255));
-		btnInserirNotas.setFont(new Font("Calibri", Font.BOLD, 20));
-		
-		btnInserirNotas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new InserirNotas().setVisible(true);
-			}
-		});
-		
-		btnInserirNotas.setBounds(554, 244, 221, 92);
-		contentPane.add(btnInserirNotas);
 		
 		JButton btnVisualizarNotas = new JButton("Visualizar notas");
+		btnVisualizarNotas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				new ListaDeAlunos().setVisible(true);				
+				
+			}
+		});
 		btnVisualizarNotas.setForeground(new Color(255, 255, 255));
 		btnVisualizarNotas.setContentAreaFilled(false);
 		btnVisualizarNotas.setOpaque(true);
@@ -78,6 +71,9 @@ public class JanelaMenu extends JFrame {
 		btnRelatorioGeral.setForeground(new Color(255, 255, 255));
 		btnRelatorioGeral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//Implemetar
+				
 			}
 		});
 		btnRelatorioGeral.setFont(new Font("Calibri", Font.BOLD, 20));
