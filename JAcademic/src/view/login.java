@@ -93,7 +93,7 @@ public class login {
 					AcademicDAO.getInstance().initializeDatabase();
 					
 					new JanelaMenu().setVisible(true);
-					
+					frame.dispose();
 					
 					
 				}else {
