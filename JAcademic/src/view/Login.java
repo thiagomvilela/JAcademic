@@ -17,7 +17,7 @@ import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class login {
+public class Login {
 
 	private JFrame frame;
 	private JTextField userTxt;
@@ -35,7 +35,7 @@ public class login {
 			{
 				try 
 				{
-					login window = new login();
+					Login window = new Login();
 					window.frame.setVisible(true);
 				} 
 				catch (Exception e) 
@@ -50,7 +50,7 @@ public class login {
 	/**
 	 * Create the application.
 	 */
-	public login() {
+	public Login() {
 		
 		initialize();
 		
@@ -62,21 +62,21 @@ public class login {
 	private void initialize() {
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 512, 288);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
 		
 		JLabel user = new JLabel("Usuário");
-		user.setBounds(115, 75, 46, 14);
+		user.setBounds(164, 65, 46, 14);
 		frame.getContentPane().add(user);
 		
 		JLabel senha = new JLabel("Senha");
-		senha.setBounds(115, 115, 46, 14);
+		senha.setBounds(164, 105, 46, 14);
 		frame.getContentPane().add(senha);
 		
 		userTxt = new JTextField();
-		userTxt.setBounds(171, 72, 114, 20);
+		userTxt.setBounds(235, 62, 114, 20);
 		frame.getContentPane().add(userTxt);
 		userTxt.setColumns(10);
 		
@@ -103,11 +103,11 @@ public class login {
 				
 			}
 		});
-		entrarBt.setBounds(215, 168, 89, 23);
+		entrarBt.setBounds(208, 186, 89, 23);
 		frame.getContentPane().add(entrarBt);
 		
 		passTxt = new JPasswordField();
-		passTxt.setBounds(171, 112, 114, 20);
+		passTxt.setBounds(235, 102, 114, 20);
 		frame.getContentPane().add(passTxt);
 		
 		alterarBt = new JButton("Alterar/Set login");
@@ -116,17 +116,15 @@ public class login {
 				var usuario = userTxt.getText();
 				var senha = new String(passTxt.getPassword());
 				
-				if (userTxt.getText()=="" || new String(passTxt.getPassword())=="") {
-					
-					usuario = "root";
-					senha = "root";
-					ConnectionFactory.usuario = usuario;
-					ConnectionFactory.senha = senha;
-					JOptionPane.showMessageDialog(null, "Usuário e senha alterados para root e root", "Alterado para senha padrão", JOptionPane.PLAIN_MESSAGE);
+				if (userTxt.getText().isEmpty() || new String(passTxt.getPassword()).isEmpty()) {
+										
+					JOptionPane.showMessageDialog(null, "Usuário e/ou senha vazios", "Login vazio", JOptionPane.ERROR_MESSAGE);
 					
 				}else {
+					
 					usuario = userTxt.getText();
 					senha = new String(passTxt.getPassword());
+					
 					ConnectionFactory.usuario = usuario;
 					ConnectionFactory.senha = senha;
 					System.out.println(usuario +" "+ senha);
@@ -139,13 +137,33 @@ public class login {
 			}
 		});
 		
-		alterarBt.setBounds(93, 168, 114, 23);
+		alterarBt.setBounds(78, 186, 114, 23);
 		frame.getContentPane().add(alterarBt);
+		
+		JButton loginpadraoBT = new JButton("Login Padrao");
+		loginpadraoBT.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ConnectionFactory.usuario = "root";
+				ConnectionFactory.senha = "root";
+				
+				JOptionPane.showMessageDialog(null, "Bem vindo ao banco de dados!", "Login", JOptionPane.PLAIN_MESSAGE);
+				
+				//Deletando banco de dados !
+				AcademicDAO.getInstance().DeleteDatabase();
+				AcademicDAO.getInstance().initializeDatabase();
+				
+				new JanelaMenu().setVisible(true);
+				frame.dispose();
+				
+			}
+		});
+		loginpadraoBT.setBounds(307, 186, 139, 23);
+		frame.getContentPane().add(loginpadraoBT);
 		
 	}
 	
 	public boolean checkLogin(String login, String senha) {
 		return login.equals(ConnectionFactory.usuario) && senha.equals(ConnectionFactory.senha);
 	}
-	
 }
