@@ -30,6 +30,7 @@ public class InserirNotas extends JFrame {
 	private JTextField textFieldAluno1;	
 	private Aluno alunoEmExibicao;
 	private int _matriculaDoALuno;
+	private JButton btnVoltar;
 
 	/**
 	 * Launch the application.
@@ -55,7 +56,7 @@ public class InserirNotas extends JFrame {
 	 * Create the frame.
 	*/
 	public InserirNotas(int matriculaDoALuno) {		
-		super("Sistema de Gestï¿½o de Docentes");
+		super("Sistema de Gestão de Docentes");
 		
 		_matriculaDoALuno = matriculaDoALuno;
 		
@@ -73,7 +74,7 @@ public class InserirNotas extends JFrame {
 		contentPane.setLayout(null);	
 		
 		
-		JLabel lblNewLabel = new JLabel("Notas e Conceitos Acad\u00EAmicos");
+		JLabel lblNewLabel = new JLabel("Notas e Conceitos Acadêmicos");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 42));
 		lblNewLabel.setBounds(171, 44, 551, 73);
@@ -91,7 +92,7 @@ public class InserirNotas extends JFrame {
 		btnSalvar.setBackground(Color.decode("#008F26"));
 		btnSalvar.setForeground(new Color(255, 255, 255));
 		btnSalvar.setFont(new Font("Calibri", Font.BOLD, 16));		
-		btnSalvar.setBounds(395, 585, 122, 45);
+		btnSalvar.setBounds(370, 585, 122, 45);
 		btnSalvar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -117,7 +118,7 @@ public class InserirNotas extends JFrame {
         }
         catch(ParseException excp) 
 		{
-            System.err.println("Erro na formataï¿½ï¿½o: " + excp.getMessage());
+            System.err.println("Erro na formatação: " + excp.getMessage());
             System.exit(-1);
         }
 		
@@ -168,6 +169,19 @@ public class InserirNotas extends JFrame {
 		textFieldSituacao1.setBounds(731, 285, 105, 31);
 		textFieldSituacao1.setText(""+ alunoEmExibicao.getSituacao());
 		contentPane.add(textFieldSituacao1);
+		
+		btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ListaDeAlunos().setVisible(true);
+				dispose();
+			}
+		});
+		btnVoltar.setForeground(Color.WHITE);
+		btnVoltar.setFont(new Font("Calibri", Font.BOLD, 16));
+		btnVoltar.setBackground(new Color(0, 143, 38));
+		btnVoltar.setBounds(507, 585, 122, 45);
+		contentPane.add(btnVoltar);
 	}	
 
 }

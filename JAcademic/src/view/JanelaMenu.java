@@ -37,7 +37,7 @@ public class JanelaMenu extends JFrame {
 	 */
 	public JanelaMenu() {
 		
-		super("Sistema de Gestï¿½o de Docentes");
+		super("Sistema de Gestão de Docentes");
 		setBackground(new Color(0, 255, 0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -64,10 +64,10 @@ public class JanelaMenu extends JFrame {
 		btnVisualizarNotas.setOpaque(true);
 		btnVisualizarNotas.setBackground(Color.decode("#DB252C"));
 		btnVisualizarNotas.setFont(new Font("Calibri", Font.BOLD, 20));
-		btnVisualizarNotas.setBounds(145, 244, 221, 92);
+		btnVisualizarNotas.setBounds(342, 245, 221, 92);
 		contentPane.add(btnVisualizarNotas);
 		
-		JButton btnRelatorioGeral = new JButton("Relat\u00F3rio Geral");
+		JButton btnRelatorioGeral = new JButton("Relatório Geral");
 		btnRelatorioGeral.setForeground(new Color(255, 255, 255));
 		btnRelatorioGeral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -83,8 +83,8 @@ public class JanelaMenu extends JFrame {
 		btnRelatorioGeral.setBackground(Color.decode("#DB252C"));
 		contentPane.add(btnRelatorioGeral);
 		
-		JLabel lblNewLabel = new JLabel("\u00C1rea do Professor");
-		lblNewLabel.setForeground(new Color(0, 0, 0));
+		JLabel lblNewLabel = new JLabel("Área do Professor");
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 42));
 		lblNewLabel.setBounds(298, 11, 322, 68);
 		contentPane.add(lblNewLabel);
