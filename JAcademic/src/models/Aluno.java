@@ -106,7 +106,7 @@ public class Aluno {
     @Override
     public String toString() {
     	
-    	var aluno = "|Aluno[" + matricula +": " + nome + "|\n";
+    	var aluno = "|Aluno[" + matricula +"]: " + nome + "|\n";
     	aluno += "Av1: " + primeira_nota + "\n"; 
     	aluno += "Av2: " + segunda_nota + "\n";
     	aluno += "Recuperação: " + nota_recuperacao + "\n";

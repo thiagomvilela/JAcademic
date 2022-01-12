@@ -52,7 +52,7 @@ public class InserirNotas extends JFrame {
 	 * Create the frame.
 	*/
 	public InserirNotas(int matriculaDoALuno) {		
-		super("Sistema de Gest�o de Docentes");
+		super("Sistema de Gestão de Docentes");
 		
 		_matriculaDoALuno = matriculaDoALuno;
 		
