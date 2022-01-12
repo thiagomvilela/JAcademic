@@ -8,17 +8,17 @@ import java.io.PrintWriter;
 
 public class Relatorio {
 	
-	public static void drawTxt(String path, String txt) {
-		try(
-				
-				FileWriter fw = new FileWriter(path, false);
-				PrintWriter pw = new PrintWriter(fw);
-				
-				
-				){
-			fw.append(txt);
+	public static void drawTxt(String path, String txt) 
+	{
+		
+		try(FileWriter fw = new FileWriter(path, true); PrintWriter pw = new PrintWriter(fw);) 
+		{ 
+																																								
+			fw.append(txt);		
 			
-		}catch(IOException e){
+		}
+		catch(IOException e)
+		{
 			e.printStackTrace();
 		}
 	}

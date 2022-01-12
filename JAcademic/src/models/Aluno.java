@@ -48,44 +48,72 @@ public class Aluno {
 
     public String getSituacao() 
     {   	    	    	
+    	if(primeira_nota == 0 || segunda_nota == 0) 
+    	{
+    		situacao = "Cursando";
+    		return situacao;
+    	}    	
+    	
+		var media = (primeira_nota + segunda_nota) / 2;
+    	
+    	if(situacao.equals("Cursando")) 
+    	{    		
+    		if(media >= 7) 
+    		{
+    			situacao = "Aprovado";
+    		}
+    		else 
+    		{    
+    			situacao = "Recuperação";        			
+    		} 
+    		
+    		return situacao;
+    	}    	
+    	
+    	
+    	if(media <= 7) 
+    	{
+    		if(nota_recuperacao == 0) 
+    		{
+    			situacao = "Recuperação";  
+    		}
+    		else 
+    		{
+    			var mediaRecuperacao = media + nota_recuperacao / 2;
+    			
+    			if(mediaRecuperacao >= 7) 
+    			{
+    				situacao = "Aprovado";
+    			}
+    			else 
+    			{
+    				situacao = "Reprovado";
+    			}
+    		}    		
+    					
+			return situacao;
+    	}        	       
+    	    
+    	
         return situacao;
     }
     
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
-    
-    public String verificarSituacao() 
-    {
-    	var media = (primeira_nota + segunda_nota) / 2;
-    	
-    	if(situacao == "Cursando") 
-    	{    		
-    		if(media >= 7) 
-    		{
-    			return "Aprovado";
-    		}
-    		else 
-    		{    
-    			return "Recupera��o";
-    		}    		
-    	}
-    	
-    	if(situacao == "Recupera��o") 
-    	{
-    		var mediaRecuperacao = media + nota_recuperacao / 2;
-			
-			if(mediaRecuperacao >= 7) 
-			{
-				return "Aprovado";
-			}
-			else 
-			{
-				return "Reprovado";
-			}
-    	}
-    	
-    	return "Cursando";    	
-    }
+        
 
+    @Override
+    public String toString() {
+    	
+    	var aluno = "|Aluno[" + matricula +": " + nome + "|\n";
+    	aluno += "Av1: " + primeira_nota + "\n"; 
+    	aluno += "Av2: " + segunda_nota + "\n";
+    	aluno += "Recuperação: " + nota_recuperacao + "\n";
+    	aluno += "Situação: " + getSituacao() + "\n";
+    	
+    	return aluno;
+    }
+    
+    
 }

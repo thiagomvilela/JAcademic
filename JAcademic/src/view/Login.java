@@ -98,9 +98,7 @@ public class Login {
 				}
 				
 				try 
-				{									
-					//Deletando banco de dados !
-					AcademicDAO.getInstance().DeleteDatabase();
+				{
 					AcademicDAO.getInstance().initializeDatabase();
 					
 					JOptionPane.showMessageDialog(null, "Bem vindo ao banco de dados!", "Login", JOptionPane.PLAIN_MESSAGE);
@@ -123,12 +121,10 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 				
 				ConnectionFactory.usuario = "root";
-				ConnectionFactory.senha = "sidi2022";
+				ConnectionFactory.senha = "root";
 				
 				try 
-				{										
-					//Deletando banco de dados !
-					AcademicDAO.getInstance().DeleteDatabase();
+				{
 					AcademicDAO.getInstance().initializeDatabase();
 					
 					JOptionPane.showMessageDialog(null, "Bem vindo ao banco de dados!", "Login", JOptionPane.PLAIN_MESSAGE);

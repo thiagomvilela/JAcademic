@@ -48,7 +48,7 @@ public class AcademicDAO {
         } 
         catch (SQLException e) 
         {
-            // SE DATABASE EXISTIR, NÃO INICIAREMOS ELE NOVAMENTE
+            // SE DATABASE EXISTIR, Nï¿½O INICIAREMOS ELE NOVAMENTE
             isInitialize = false;
         } 
         finally 
