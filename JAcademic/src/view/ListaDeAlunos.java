@@ -1,12 +1,10 @@
 package view;
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.text.MaskFormatter;
 import models.AlunoTableModel;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -15,7 +13,6 @@ import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 public class ListaDeAlunos extends JFrame {
