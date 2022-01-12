@@ -67,7 +67,7 @@ public class Login {
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
 		
-		JLabel user = new JLabel("Usu·rio");
+		JLabel user = new JLabel("Usu√°rio");
 		user.setBounds(164, 65, 46, 14);
 		frame.getContentPane().add(user);
 		
@@ -97,7 +97,7 @@ public class Login {
 					
 					
 				}else {
-					JOptionPane.showMessageDialog(null, "Usuario e/ou senha inv·lidos!", "Erro de login", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Usuario e/ou senha invalidos!", "Erro de login", JOptionPane.ERROR_MESSAGE);
 				}
 				
 				
@@ -118,7 +118,7 @@ public class Login {
 				
 				if (userTxt.getText().isEmpty() || new String(passTxt.getPassword()).isEmpty()) {
 										
-					JOptionPane.showMessageDialog(null, "Usu·rio e/ou senha vazios", "Login vazio", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Usu√°rio e/ou senha vazios", "Login vazio", JOptionPane.ERROR_MESSAGE);
 					
 				}else {
 					
@@ -128,7 +128,7 @@ public class Login {
 					ConnectionFactory.usuario = usuario;
 					ConnectionFactory.senha = senha;
 					System.out.println(usuario +" "+ senha);
-					JOptionPane.showMessageDialog(null, "Usu·rio e senha alterados clique para iniciar o Banco de dados", "Alterado para senha padr„o", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Usu√°rio e senha alterados clique para iniciar o Banco de dados", "Alterado para senha padrÔøΩo", JOptionPane.PLAIN_MESSAGE);
 				}
 				
 				checkLogin(usuario, senha);
