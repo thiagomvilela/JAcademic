@@ -122,7 +122,7 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 				
 				ConnectionFactory.usuario = "root";
-				ConnectionFactory.senha = "root";
+				ConnectionFactory.senha = "sidi2022";
 				
 				try 
 				{										

@@ -124,7 +124,7 @@ public class InserirNotas extends JFrame {
 		
 		try
 		{
-            mascaraNotas = new MaskFormatter("##");
+            mascaraNotas = new MaskFormatter("##.##");
         }
         catch(ParseException excp) 
 		{
