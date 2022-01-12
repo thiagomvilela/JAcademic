@@ -10,12 +10,13 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
-import models.bean.Aluno;
-import models.dao.AcademicDAO;
+import models.AcademicDAO;
+import models.Aluno;
 
 public class InserirNotas extends JFrame {
 
@@ -96,9 +97,18 @@ public class InserirNotas extends JFrame {
 		btnSalvar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+										
+				alunoEmExibicao.getMatricula();
+				alunoEmExibicao.setPrimeira_nota(Double.parseDouble(textFieldAv1_1.getText()));
+				alunoEmExibicao.setSegunda_nota(Double.parseDouble(textFieldAv2_1.getText()));
+				alunoEmExibicao.setNota_recuperacao(Double.parseDouble(textFieldRecuperacao1.getText()));
+				//GERANDO NOVA SITUACAO DO ALUNO BASEADO NAS NOVAS NOTAS
+				alunoEmExibicao.setSituacao(alunoEmExibicao.verificarSituacao());
 				
-				//Implemetar
+				AcademicDAO.getInstance().InserirNota(alunoEmExibicao);
 				
+				new ListaDeAlunos().setVisible(true);
+				dispose();
 			}
 		});		
 		
@@ -114,12 +124,11 @@ public class InserirNotas extends JFrame {
 		
 		try
 		{
-            mascaraNotas = new MaskFormatter("##.##");
+            mascaraNotas = new MaskFormatter("##");
         }
         catch(ParseException excp) 
 		{
-            System.err.println("Erro na formatação: " + excp.getMessage());
-            System.exit(-1);
+        	JOptionPane.showMessageDialog(null, "Error de formatação", "Mesagem de Error Academic Notes", JOptionPane.ERROR_MESSAGE);
         }
 		
 		textFieldMatricula1 = new JTextField();
@@ -140,10 +149,9 @@ public class InserirNotas extends JFrame {
 		textFieldAv1_1 = new JTextField();
 		textFieldAv1_1 = new JFormattedTextField(mascaraNotas);
 		textFieldAv1_1.setForeground(new Color(0, 0, 0));
-		textFieldAv1_1.setColumns(10);
 		textFieldAv1_1.setBounds(439, 285, 71, 31);
-		textFieldAv1_1.setText(""+ alunoEmExibicao.getPrimeira_nota());
-		
+		textFieldAv1_1.setText(""+ alunoEmExibicao.getPrimeira_nota());	
+		textFieldAv1_1.setColumns(10);
 		contentPane.add(textFieldAv1_1);
 		
 		textFieldAv2_1 = new JTextField();
@@ -171,8 +179,10 @@ public class InserirNotas extends JFrame {
 		contentPane.add(textFieldSituacao1);
 		
 		btnVoltar = new JButton("Voltar");
-		btnVoltar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnVoltar.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				new ListaDeAlunos().setVisible(true);
 				dispose();
 			}

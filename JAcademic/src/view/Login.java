@@ -6,12 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
-import com.mysql.cj.x.protobuf.MysqlxConnection.Close;
-
 import connection.ConnectionFactory;
-import models.dao.AcademicDAO;
-
+import models.AcademicDAO;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
@@ -22,12 +18,7 @@ public class Login {
 	private JFrame frame;
 	private JTextField userTxt;
 	private JPasswordField passTxt;
-	private JButton alterarBt;
-
-	/**
-	 * Launch the application.
-	 */
-	
+		
 	public static void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -46,19 +37,14 @@ public class Login {
 		});
 		
 	}
-
-	/**
-	 * Create the application.
-	 */
+	
 	public Login() {
 		
 		initialize();
 		
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	
 	private void initialize() {
 		
 		frame = new JFrame();
@@ -68,102 +54,96 @@ public class Login {
 		frame.setLocationRelativeTo(null);
 		
 		JLabel user = new JLabel("Usuário");
-		user.setBounds(164, 65, 46, 14);
+		user.setBounds(150, 82, 46, 14);
 		frame.getContentPane().add(user);
 		
 		JLabel senha = new JLabel("Senha");
-		senha.setBounds(164, 105, 46, 14);
+		senha.setBounds(150, 122, 46, 14);
 		frame.getContentPane().add(senha);
 		
 		userTxt = new JTextField();
-		userTxt.setBounds(235, 62, 114, 20);
+		userTxt.setBounds(221, 79, 114, 20);
 		frame.getContentPane().add(userTxt);
 		userTxt.setColumns(10);
 		
-		JButton entrarBt = new JButton("Entrar");
-		entrarBt.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if(checkLogin(userTxt.getText(), new String(passTxt.getPassword()))) {
-					
-					JOptionPane.showMessageDialog(null, "Bem vindo ao banco de dados!", "Login", JOptionPane.PLAIN_MESSAGE);
-					
-					//Deletando banco de dados !
-					AcademicDAO.getInstance().DeleteDatabase();
-					AcademicDAO.getInstance().initializeDatabase();
-					
-					new JanelaMenu().setVisible(true);
-					frame.dispose();
-					
-					
-				}else {
-					JOptionPane.showMessageDialog(null, "Usuario e/ou senha inválidos!", "Erro de login", JOptionPane.ERROR_MESSAGE);
-				}
-				
-				
-			}
-		});
-		entrarBt.setBounds(208, 186, 89, 23);
-		frame.getContentPane().add(entrarBt);
-		
 		passTxt = new JPasswordField();
-		passTxt.setBounds(235, 102, 114, 20);
+		passTxt.setBounds(221, 119, 114, 20);
 		frame.getContentPane().add(passTxt);
 		
-		alterarBt = new JButton("Alterar/Set login");
-		alterarBt.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JButton entrarBt = new JButton("Entrar");				
+		entrarBt.setBounds(125, 186, 89, 23);
+		
+		entrarBt.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) 
+			{
+				
 				var usuario = userTxt.getText();
 				var senha = new String(passTxt.getPassword());
 				
-				if (userTxt.getText().isEmpty() || new String(passTxt.getPassword()).isEmpty()) {
+				if (userTxt.getText().isEmpty() || new String(passTxt.getPassword()).isEmpty()) 
+				{
 										
 					JOptionPane.showMessageDialog(null, "Usuário e/ou senha vazios", "Login vazio", JOptionPane.ERROR_MESSAGE);
 					
-				}else {
-					
+				}
+				else 
+				{					
 					usuario = userTxt.getText();
 					senha = new String(passTxt.getPassword());
 					
 					ConnectionFactory.usuario = usuario;
-					ConnectionFactory.senha = senha;
-					System.out.println(usuario +" "+ senha);
-					JOptionPane.showMessageDialog(null, "Usuário e senha alterados clique para iniciar o Banco de dados", "Alterado para senha padrão", JOptionPane.PLAIN_MESSAGE);
+					ConnectionFactory.senha = senha;								
 				}
 				
-				checkLogin(usuario, senha);
-				
-				
+				try 
+				{									
+					//Deletando banco de dados !
+					AcademicDAO.getInstance().DeleteDatabase();
+					AcademicDAO.getInstance().initializeDatabase();
+					
+					JOptionPane.showMessageDialog(null, "Bem vindo ao banco de dados!", "Login", JOptionPane.PLAIN_MESSAGE);
+					
+					new JanelaMenu().setVisible(true);
+					frame.dispose();
+				}
+				catch (Exception ex) 
+				{
+					JOptionPane.showMessageDialog(null, "Usuario e/ou senha inválidos! Erro: " + ex.getMessage(), "Erro de login", JOptionPane.ERROR_MESSAGE);
+				}													
 			}
 		});
-		
-		alterarBt.setBounds(78, 186, 114, 23);
-		frame.getContentPane().add(alterarBt);
+				
+		frame.getContentPane().add(entrarBt);						
 		
 		JButton loginpadraoBT = new JButton("Login Padrao");
+		loginpadraoBT.setBounds(224, 186, 139, 23);		
 		loginpadraoBT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				ConnectionFactory.usuario = "root";
 				ConnectionFactory.senha = "root";
 				
-				JOptionPane.showMessageDialog(null, "Bem vindo ao banco de dados!", "Login", JOptionPane.PLAIN_MESSAGE);
-				
-				//Deletando banco de dados !
-				AcademicDAO.getInstance().DeleteDatabase();
-				AcademicDAO.getInstance().initializeDatabase();
-				
-				new JanelaMenu().setVisible(true);
-				frame.dispose();
-				
+				try 
+				{										
+					//Deletando banco de dados !
+					AcademicDAO.getInstance().DeleteDatabase();
+					AcademicDAO.getInstance().initializeDatabase();
+					
+					JOptionPane.showMessageDialog(null, "Bem vindo ao banco de dados!", "Login", JOptionPane.PLAIN_MESSAGE);
+					
+					new JanelaMenu().setVisible(true);
+					frame.dispose();
+				}
+				catch (Exception ex) 
+				{
+					JOptionPane.showMessageDialog(null, "Usuario e/ou senha inválidos! Erro: " + ex.getMessage(), "Erro de login", JOptionPane.ERROR_MESSAGE);
+				}																				
 			}
-		});
-		loginpadraoBT.setBounds(307, 186, 139, 23);
+		});		
+		
 		frame.getContentPane().add(loginpadraoBT);
 		
-	}
+	}	
 	
-	public boolean checkLogin(String login, String senha) {
-		return login.equals(ConnectionFactory.usuario) && senha.equals(ConnectionFactory.senha);
-	}
 }

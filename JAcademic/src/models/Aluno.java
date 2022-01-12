@@ -1,4 +1,4 @@
-package models.bean;
+package models;
 
 public class Aluno {
     
@@ -46,11 +46,46 @@ public class Aluno {
         this.nota_recuperacao = nota_recuperacao;
     }
 
-    public String getSituacao() {
+    public String getSituacao() 
+    {   	    	    	
         return situacao;
     }
+    
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+    
+    public String verificarSituacao() 
+    {
+    	var media = (primeira_nota + segunda_nota) / 2;
+    	
+    	if(situacao == "Cursando") 
+    	{    		
+    		if(media >= 7) 
+    		{
+    			return "Aprovado";
+    		}
+    		else 
+    		{    
+    			return "Recuperação";
+    		}    		
+    	}
+    	
+    	if(situacao == "Recuperação") 
+    	{
+    		var mediaRecuperacao = media + nota_recuperacao / 2;
+			
+			if(mediaRecuperacao >= 7) 
+			{
+				return "Aprovado";
+			}
+			else 
+			{
+				return "Reprovado";
+			}
+    	}
+    	
+    	return "Cursando";    	
     }
 
 }
