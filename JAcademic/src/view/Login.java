@@ -53,8 +53,9 @@ public class Login {
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
 		
-		JLabel user = new JLabel("Usuário");
+		JLabel user = new JLabel("UsuÃ¡rio");
 		user.setBounds(150, 82, 46, 14);
+
 		frame.getContentPane().add(user);
 		
 		JLabel senha = new JLabel("Senha");
@@ -84,7 +85,7 @@ public class Login {
 				if (userTxt.getText().isEmpty() || new String(passTxt.getPassword()).isEmpty()) 
 				{
 										
-					JOptionPane.showMessageDialog(null, "Usuário e/ou senha vazios", "Login vazio", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "UsuÃ¡rio e/ou senha vazios", "Login vazio", JOptionPane.ERROR_MESSAGE);
 					
 				}
 				else 
@@ -109,7 +110,7 @@ public class Login {
 				}
 				catch (Exception ex) 
 				{
-					JOptionPane.showMessageDialog(null, "Usuario e/ou senha inválidos! Erro: " + ex.getMessage(), "Erro de login", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Usuario e/ou senha invÃ¡lidos! Erro: " + ex.getMessage(), "Erro de login", JOptionPane.ERROR_MESSAGE);
 				}													
 			}
 		});
@@ -137,7 +138,7 @@ public class Login {
 				}
 				catch (Exception ex) 
 				{
-					JOptionPane.showMessageDialog(null, "Usuario e/ou senha inválidos! Erro: " + ex.getMessage(), "Erro de login", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Usuario e/ou senha invÃ¡lidos! Erro: " + ex.getMessage(), "Erro de login", JOptionPane.ERROR_MESSAGE);
 				}																				
 			}
 		});		
