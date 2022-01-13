@@ -1,12 +1,25 @@
-# Academic Notes
+<h1 align="center">JAcademic - Academic Grading System</h1>
 
-Bem vindo a instalação do Academic Notes. Primeiramente verifique se sua máquina possui todos os requisitos necessários para o funcionamento:
+## Project description
+This project is a Management System for Teachers, developed for the Object Oriented Programming Language course at the Federal Institute of Pernambuco (IFPE).
 
-  a) Código-Fonte do Projeto: https://github.com/Viny-lima/AcademicNotes
-    
-   b) Encontre o arquivo no package connection/ConnectionFactory e adicine sua senha, usuário e o caminho do banco de dados, se seu banco estiver configurado da maneira padrão basta informar a senha se o mesmo tiver senha:
+System requirements:
+- Note 1st unit;
+- Note 2nd unit;
+- Final Exam Score (Only for students who did not reach the average of 7.00);
+- Final average calculated automatically.
 
-   ![image](https://user-images.githubusercontent.com/82112071/148095912-3077e804-13c4-4028-bf75-535f3b3cdda8.png)
+Note: Students will already be registered on the platform.
 
-  c) Agora é só inicializar o sistema no seu ambiente de desenvolvimento.
+Teacher does:
+- Insert notes;
+- View grades and final average.
+- You can export the final report in “.txt” format.
 
+### 🛠 Technologies
+
+The following tools were used in the construction of the project:
+
+- [Java](https://www.java.com/pt-BR/)
+- [MySQL](https://www.mysql.com/)
+- [MariaDB](https://mariadb.org/)
