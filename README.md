@@ -4,7 +4,7 @@
 This project is a Management System for Teachers, developed for the Object Oriented Programming Language course at the Federal Institute of Pernambuco (IFPE).
 
 System requirements:
-- Note 1st unit;;
+- Note 1st unit;
 - Note 2nd unit;
 - Final Exam Score (Only for students who did not reach the average of 7.00);
 - Final average calculated automatically.
