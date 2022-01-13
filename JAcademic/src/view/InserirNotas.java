@@ -1,20 +1,15 @@
 package view;
-
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.MaskFormatter;
 import models.AcademicDAO;
 import models.Aluno;
 
@@ -57,7 +52,7 @@ public class InserirNotas extends JFrame {
 	 * Create the frame.
 	*/
 	public InserirNotas(int matriculaDoALuno) {		
-		super("Sistema de Gest„o de Docentes");
+		super("Sistema de Gest√£o de Docentes");
 		
 		_matriculaDoALuno = matriculaDoALuno;
 		
@@ -75,13 +70,13 @@ public class InserirNotas extends JFrame {
 		contentPane.setLayout(null);	
 		
 		
-		JLabel lblNewLabel = new JLabel("Notas e Conceitos AcadÍmicos");
+		JLabel lblNewLabel = new JLabel("Notas e Conceitos Acad√™micos");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 42));
 		lblNewLabel.setBounds(171, 44, 551, 73);
 		contentPane.add(lblNewLabel);
 		
-		lbInformacoes = new JLabel("   Matr\u00EDcula                     Aluno                             AV1        AV2        Recupera\u00E7\u00E3o        Situa\u00E7\u00E3o");
+		lbInformacoes = new JLabel("   Matr√≠cula                     Aluno                             AV1        AV2        Recupera√ß√£o        Situa√ß√£o");
 		lbInformacoes.setForeground(new Color(255, 255, 255));
 		lbInformacoes.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 20));
 		lbInformacoes.setBounds(55, 252, 781, 31);
@@ -102,8 +97,7 @@ public class InserirNotas extends JFrame {
 				alunoEmExibicao.setPrimeira_nota(Double.parseDouble(textFieldAv1_1.getText()));
 				alunoEmExibicao.setSegunda_nota(Double.parseDouble(textFieldAv2_1.getText()));
 				alunoEmExibicao.setNota_recuperacao(Double.parseDouble(textFieldRecuperacao1.getText()));
-				//GERANDO NOVA SITUACAO DO ALUNO BASEADO NAS NOVAS NOTAS
-				alunoEmExibicao.setSituacao(alunoEmExibicao.verificarSituacao());
+				alunoEmExibicao.setSituacao(textFieldSituacao1.getText());
 				
 				AcademicDAO.getInstance().InserirNota(alunoEmExibicao);
 				
@@ -118,18 +112,7 @@ public class InserirNotas extends JFrame {
 	}
 	
 	private void CreateViewModelAluno() 
-	{
-		
-		MaskFormatter mascaraNotas = null;
-		
-		try
-		{
-            mascaraNotas = new MaskFormatter("##.##");
-        }
-        catch(ParseException excp) 
-		{
-        	JOptionPane.showMessageDialog(null, "Error de formataÁ„o", "Mesagem de Error Academic Notes", JOptionPane.ERROR_MESSAGE);
-        }
+	{				
 		
 		textFieldMatricula1 = new JTextField();
 		textFieldMatricula1.setEditable(false);
@@ -147,7 +130,6 @@ public class InserirNotas extends JFrame {
 		contentPane.add(textFieldAluno1);		
 		
 		textFieldAv1_1 = new JTextField();
-		textFieldAv1_1 = new JFormattedTextField(mascaraNotas);
 		textFieldAv1_1.setForeground(new Color(0, 0, 0));
 		textFieldAv1_1.setBounds(439, 285, 71, 31);
 		textFieldAv1_1.setText(""+ alunoEmExibicao.getPrimeira_nota());	
@@ -155,7 +137,6 @@ public class InserirNotas extends JFrame {
 		contentPane.add(textFieldAv1_1);
 		
 		textFieldAv2_1 = new JTextField();
-		textFieldAv2_1 = new JFormattedTextField(mascaraNotas);
 		textFieldAv2_1.setForeground(Color.BLACK);
 		textFieldAv2_1.setColumns(10);
 		textFieldAv2_1.setBounds(507, 285, 71, 31);
@@ -163,7 +144,6 @@ public class InserirNotas extends JFrame {
 		contentPane.add(textFieldAv2_1);
 		
 		textFieldRecuperacao1 = new JTextField();
-		textFieldRecuperacao1 = new JFormattedTextField(mascaraNotas);
 		textFieldRecuperacao1.setForeground(Color.BLACK);
 		textFieldRecuperacao1.setColumns(10);
 		textFieldRecuperacao1.setBounds(577, 285, 155, 31);

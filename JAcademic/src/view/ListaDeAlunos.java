@@ -1,12 +1,10 @@
 package view;
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.text.MaskFormatter;
 import models.AlunoTableModel;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -15,7 +13,6 @@ import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 public class ListaDeAlunos extends JFrame {
@@ -25,7 +22,7 @@ public class ListaDeAlunos extends JFrame {
 		
 	public ListaDeAlunos() 
 	{
-		super("Sistema de Gest„o de Docentes");
+		super("Sistema de Gest√£o de Docentes");
 		getContentPane().setBackground(Color.decode("#25DB55"));
 		
 		setBackground(new Color(0, 255, 0));
@@ -65,19 +62,19 @@ public class ListaDeAlunos extends JFrame {
 			}
 		});				
 		
-		JLabel lblNewLabel = new JLabel("MATR\u00CDCULA DO ALUNO: ");
+		JLabel lblNewLabel = new JLabel("MATR√çCULA DO ALUNO: ");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 24));
 		lblNewLabel.setBounds(50, 587, 241, 36);
 		getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Notas e Conceitos Acad\u00EAmicos");
+		JLabel lblNewLabel_1 = new JLabel("Notas e Conceitos Acad√™micos");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Calibri", Font.BOLD, 42));
 		lblNewLabel_1.setBounds(170, 26, 551, 73);
 		getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Entrada com 2 d\u00EDgitos, Ex.: 01");
+		JLabel lblNewLabel_2 = new JLabel("Entrada com 2 digitos, Ex.: 01");
 		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 18));
 		lblNewLabel_2.setBounds(60, 619, 231, 18);		
@@ -92,7 +89,7 @@ public class ListaDeAlunos extends JFrame {
         }
         catch(ParseException excp) 
 		{
-            JOptionPane.showMessageDialog(null, "Erro de formataÁ„o", "Mesagem de Erro Academic Notes", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro de formata√ß√£o", "Mesagem de Erro Academic Notes", JOptionPane.ERROR_MESSAGE);
         }
 		
 		
