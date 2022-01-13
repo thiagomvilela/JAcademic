@@ -79,7 +79,7 @@ public class ListaDeAlunos extends JFrame {
 		lblNewLabel_1.setBounds(218, 25, 551, 73);
 		getContentPane().add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Entrada com 2 digitos, Ex.: 01");
+		JLabel lblNewLabel_2 = new JLabel("Entrada com 2 dígitos, Ex.: 01");
 		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setFont(new Font("Calibri", Font.PLAIN, 18));
 		lblNewLabel_2.setBounds(79, 611, 231, 18);		
