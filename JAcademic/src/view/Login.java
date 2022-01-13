@@ -82,9 +82,9 @@ public class Login {
 		JButton entrarBt = new JButton("Entrar");				
 		entrarBt.setForeground(Color.WHITE);
 		entrarBt.setFont(new Font("Calibri", Font.PLAIN, 12));
-		entrarBt.setBounds(125, 186, 89, 23);
+		entrarBt.setBounds(113, 187, 89, 23);
 		entrarBt.setOpaque(true);
-		entrarBt.setBackground(Color.decode("#0A6FC7"));
+		entrarBt.setBackground(Color.decode("#167432"));
 		
 		entrarBt.addActionListener(new ActionListener() {
 			
@@ -127,41 +127,60 @@ public class Login {
 				
 		frame.getContentPane().add(entrarBt);						
 		
-		JButton loginpadraoBT = new JButton("Login Padrão");
-		loginpadraoBT.setForeground(Color.WHITE);
-		loginpadraoBT.setFont(new Font("Calibri", Font.PLAIN, 12));
-		loginpadraoBT.setBounds(224, 186, 139, 23);
-		loginpadraoBT.setOpaque(true);
-		loginpadraoBT.setBackground(Color.decode("#0A6FC7"));
-		loginpadraoBT.addActionListener(new ActionListener() {
+		JButton loginBT = new JButton("Login BD");
+		loginBT.setForeground(Color.WHITE);
+		loginBT.setFont(new Font("Calibri", Font.PLAIN, 12));
+		loginBT.setBounds(214, 187, 89, 23);
+		loginBT.setOpaque(true);
+		loginBT.setBackground(Color.decode("#0A6FC7"));
+		loginBT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ConnectionFactory.usuario = "root";
-				ConnectionFactory.senha = "root";
+			
+				if (userTxt.getText().isEmpty() || new String(passTxt.getPassword()).isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Usuário e/ou senha vazios", "Login vazio", JOptionPane.ERROR_MESSAGE);
+					
+				}else {
+					var usuario = userTxt.getText();
+					var senha = new String(passTxt.getPassword());
+					ConnectionFactory.usuario = usuario;
+					ConnectionFactory.senha = senha;
+					JOptionPane.showMessageDialog(null, "Conexão com o banco de dados efetuada!", "Banco de dados", JOptionPane.INFORMATION_MESSAGE);
 				
-				try 
-				{
-					AcademicDAO.getInstance().initializeDatabase();
-					
-					JOptionPane.showMessageDialog(null, "Bem vindo ao banco de dados!", "Login", JOptionPane.PLAIN_MESSAGE);
-					
-					new JanelaMenu().setVisible(true);
-					frame.dispose();
 				}
-				catch (Exception ex) 
-				{
-					JOptionPane.showMessageDialog(null, "Usuario e/ou senha inválidos! Erro: " + ex.getMessage(), "Erro de login", JOptionPane.ERROR_MESSAGE);
-				}																				
+																							
 			}
 		});		
 		
-		frame.getContentPane().add(loginpadraoBT);
+		frame.getContentPane().add(loginBT);
 		
 		JLabel lblNewLabel = new JLabel("Configuração do Banco de Dados");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 18));
 		lblNewLabel.setBounds(125, 26, 256, 23);
 		frame.getContentPane().add(lblNewLabel);
+		
+		JButton limparBT = new JButton("Limpar BD");
+		limparBT.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (userTxt.getText().isEmpty() || new String(passTxt.getPassword()).isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Primeiro faça o login", "Login", JOptionPane.ERROR_MESSAGE);
+				}else {
+					
+				JOptionPane.showMessageDialog(null, "Banco de dados foi deletado!", "Banco de Dados", JOptionPane.PLAIN_MESSAGE);
+				
+				AcademicDAO.getInstance().DeleteDatabase();
+				}
+			}
+		});
+		limparBT.setOpaque(true);
+		limparBT.setForeground(Color.WHITE);
+		limparBT.setFont(new Font("Calibri", Font.PLAIN, 12));
+		limparBT.setOpaque(true);
+		limparBT.setBackground(Color.decode("#880015"));
+		limparBT.setBounds(313, 187, 89, 23);
+		frame.getContentPane().add(limparBT);
 		
 	}	
 }
