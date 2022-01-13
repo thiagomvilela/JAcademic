@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,23 +42,26 @@ public class JanelaMenu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	ImageIcon ifpe = new ImageIcon(getClass().getResource("jacademic.png"));
+	
 	public JanelaMenu() {
 		
-		super("Sistema de Gestão de Docentes");
+		super("JAcademic");
 		setBackground(new Color(0, 255, 0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setSize(900, 700);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.decode("#25DB55"));
+		contentPane.setBackground(Color.decode("#010024"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);		
 		
 		
-		JButton btnVisualizarNotas = new JButton("Visualizar notas");
-		btnVisualizarNotas.addActionListener(new ActionListener() {
+		JButton btnBoletim = new JButton("Boletim");
+		btnBoletim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				dispose();
@@ -65,13 +69,13 @@ public class JanelaMenu extends JFrame {
 				
 			}
 		});
-		btnVisualizarNotas.setForeground(new Color(255, 255, 255));
-		btnVisualizarNotas.setContentAreaFilled(false);
-		btnVisualizarNotas.setOpaque(true);
-		btnVisualizarNotas.setBackground(Color.decode("#DB252C"));
-		btnVisualizarNotas.setFont(new Font("Calibri", Font.BOLD, 20));
-		btnVisualizarNotas.setBounds(342, 245, 221, 92);
-		contentPane.add(btnVisualizarNotas);
+		btnBoletim.setForeground(new Color(255, 255, 255));
+		btnBoletim.setContentAreaFilled(false);
+		btnBoletim.setOpaque(true);
+		btnBoletim.setBackground(Color.decode("#0A6FC7"));
+		btnBoletim.setFont(new Font("Calibri", Font.BOLD, 20));
+		btnBoletim.setBounds(494, 246, 221, 92);
+		contentPane.add(btnBoletim);
 		
 		JButton btnRelatorioGeral = new JButton("Relatório Geral");
 		btnRelatorioGeral.setForeground(new Color(255, 255, 255));
@@ -108,16 +112,20 @@ public class JanelaMenu extends JFrame {
 		});
 		
 		btnRelatorioGeral.setFont(new Font("Calibri", Font.BOLD, 20));
-		btnRelatorioGeral.setBounds(342, 413, 221, 94);
+		btnRelatorioGeral.setBounds(494, 411, 221, 94);
 		btnRelatorioGeral.setContentAreaFilled(false);
 		btnRelatorioGeral.setOpaque(true);
-		btnRelatorioGeral.setBackground(Color.decode("#DB252C"));
+		btnRelatorioGeral.setBackground(Color.decode("#0A6FC7"));
 		contentPane.add(btnRelatorioGeral);
 		
 		JLabel lblNewLabel = new JLabel("Área do Professor");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 42));
-		lblNewLabel.setBounds(298, 11, 322, 68);
+		lblNewLabel.setBounds(292, 35, 322, 68);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblLogo = new JLabel(ifpe);
+		lblLogo.setBounds(106, 181, 322, 352);
+		contentPane.add(lblLogo);
 	}
 }

@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -51,8 +53,13 @@ public class InserirNotas extends JFrame {
 	/**
 	 * Create the frame.
 	*/
+	
+	ImageIcon ifpe = new ImageIcon(getClass().getResource("jacademicMenor.png"));
+	private JLabel lblLogo;
+	
 	public InserirNotas(int matriculaDoALuno) {		
-		super("Sistema de Gestão de Docentes");
+		
+		super("JAcademic");
 		
 		_matriculaDoALuno = matriculaDoALuno;
 		
@@ -64,7 +71,7 @@ public class InserirNotas extends JFrame {
 		setSize(900, 700);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.decode("#25DB55"));
+		contentPane.setBackground(Color.decode("#010024"));
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);	
@@ -73,22 +80,22 @@ public class InserirNotas extends JFrame {
 		JLabel lblNewLabel = new JLabel("Notas e Conceitos Acadêmicos");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 42));
-		lblNewLabel.setBounds(171, 44, 551, 73);
+		lblNewLabel.setBounds(195, 46, 551, 73);
 		contentPane.add(lblNewLabel);
 		
-		lbInformacoes = new JLabel("   Matrícula                     Aluno                             AV1        AV2        Recuperação        Situação");
+		lbInformacoes = new JLabel("   Matrícula                     Aluno                             UNID1        UNID2        REC.        Situação");
 		lbInformacoes.setForeground(new Color(255, 255, 255));
 		lbInformacoes.setFont(new Font("Calibri", Font.BOLD | Font.ITALIC, 20));
 		lbInformacoes.setBounds(55, 252, 781, 31);
 		lbInformacoes.setOpaque(true);
-		lbInformacoes.setBackground(Color.decode("#DB252C"));
+		lbInformacoes.setBackground(Color.decode("#0A6FC7"));
 		contentPane.add(lbInformacoes);
 		
 		btnSalvar = new JButton("Salvar");			
-		btnSalvar.setBackground(Color.decode("#008F26"));
+		btnSalvar.setBackground(Color.decode("#0A6FC7"));
 		btnSalvar.setForeground(new Color(255, 255, 255));
 		btnSalvar.setFont(new Font("Calibri", Font.BOLD, 16));		
-		btnSalvar.setBounds(370, 585, 122, 45);
+		btnSalvar.setBounds(318, 585, 122, 45);
 		btnSalvar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -131,7 +138,7 @@ public class InserirNotas extends JFrame {
 		
 		textFieldAv1_1 = new JTextField();
 		textFieldAv1_1.setForeground(new Color(0, 0, 0));
-		textFieldAv1_1.setBounds(439, 285, 71, 31);
+		textFieldAv1_1.setBounds(439, 285, 93, 31);
 		textFieldAv1_1.setText(""+ alunoEmExibicao.getPrimeira_nota());	
 		textFieldAv1_1.setColumns(10);
 		contentPane.add(textFieldAv1_1);
@@ -139,14 +146,14 @@ public class InserirNotas extends JFrame {
 		textFieldAv2_1 = new JTextField();
 		textFieldAv2_1.setForeground(Color.BLACK);
 		textFieldAv2_1.setColumns(10);
-		textFieldAv2_1.setBounds(507, 285, 71, 31);
+		textFieldAv2_1.setBounds(530, 285, 86, 31);
 		textFieldAv2_1.setText(""+ alunoEmExibicao.getSegunda_nota());
 		contentPane.add(textFieldAv2_1);
 		
 		textFieldRecuperacao1 = new JTextField();
 		textFieldRecuperacao1.setForeground(Color.BLACK);
 		textFieldRecuperacao1.setColumns(10);
-		textFieldRecuperacao1.setBounds(577, 285, 155, 31);
+		textFieldRecuperacao1.setBounds(616, 285, 80, 31);
 		textFieldRecuperacao1.setText(""+ alunoEmExibicao.getNota_recuperacao());
 		contentPane.add(textFieldRecuperacao1);
 		
@@ -154,7 +161,7 @@ public class InserirNotas extends JFrame {
 		textFieldSituacao1.setEditable(false);
 		textFieldSituacao1.setForeground(Color.BLACK);
 		textFieldSituacao1.setColumns(10);
-		textFieldSituacao1.setBounds(731, 285, 105, 31);
+		textFieldSituacao1.setBounds(695, 285, 141, 31);
 		textFieldSituacao1.setText(""+ alunoEmExibicao.getSituacao());
 		contentPane.add(textFieldSituacao1);
 		
@@ -169,9 +176,13 @@ public class InserirNotas extends JFrame {
 		});
 		btnVoltar.setForeground(Color.WHITE);
 		btnVoltar.setFont(new Font("Calibri", Font.BOLD, 16));
-		btnVoltar.setBackground(new Color(0, 143, 38));
-		btnVoltar.setBounds(507, 585, 122, 45);
+		btnVoltar.setBackground(Color.decode("#0A6FC7"));
+		btnVoltar.setBounds(471, 585, 122, 45);
 		contentPane.add(btnVoltar);
+		
+		lblLogo = new JLabel(ifpe);
+		lblLogo.setBounds(78, 0, 104, 120);
+		contentPane.add(lblLogo);
 	}	
 
 }

@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,13 +13,15 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class Login {
 
 	private JFrame frame;
 	private JTextField userTxt;
 	private JPasswordField passTxt;
-		
+	
+	
 	public static void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -47,19 +50,24 @@ public class Login {
 	
 	private void initialize() {
 		
-		frame = new JFrame();
+		frame = new JFrame("JAcademic");
 		frame.setBounds(100, 100, 512, 288);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
+		frame.getContentPane().setBackground(Color.decode("#010024"));
 		
-		JLabel user = new JLabel("Usuário");
-		user.setBounds(150, 82, 46, 14);
+		JLabel user = new JLabel("Usuário:");
+		user.setForeground(Color.WHITE);
+		user.setFont(new Font("Calibri", Font.PLAIN, 14));
+		user.setBounds(158, 83, 53, 17);
 
 		frame.getContentPane().add(user);
 		
-		JLabel senha = new JLabel("Senha");
-		senha.setBounds(150, 122, 46, 14);
+		JLabel senha = new JLabel("Senha:");
+		senha.setForeground(Color.WHITE);
+		senha.setFont(new Font("Calibri", Font.PLAIN, 14));
+		senha.setBounds(165, 124, 46, 14);
 		frame.getContentPane().add(senha);
 		
 		userTxt = new JTextField();
@@ -72,7 +80,11 @@ public class Login {
 		frame.getContentPane().add(passTxt);
 		
 		JButton entrarBt = new JButton("Entrar");				
+		entrarBt.setForeground(Color.WHITE);
+		entrarBt.setFont(new Font("Calibri", Font.PLAIN, 12));
 		entrarBt.setBounds(125, 186, 89, 23);
+		entrarBt.setOpaque(true);
+		entrarBt.setBackground(Color.decode("#0A6FC7"));
 		
 		entrarBt.addActionListener(new ActionListener() {
 			
@@ -115,8 +127,12 @@ public class Login {
 				
 		frame.getContentPane().add(entrarBt);						
 		
-		JButton loginpadraoBT = new JButton("Login Padrao");
-		loginpadraoBT.setBounds(224, 186, 139, 23);		
+		JButton loginpadraoBT = new JButton("Login Padrão");
+		loginpadraoBT.setForeground(Color.WHITE);
+		loginpadraoBT.setFont(new Font("Calibri", Font.PLAIN, 12));
+		loginpadraoBT.setBounds(224, 186, 139, 23);
+		loginpadraoBT.setOpaque(true);
+		loginpadraoBT.setBackground(Color.decode("#0A6FC7"));
 		loginpadraoBT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -141,6 +157,11 @@ public class Login {
 		
 		frame.getContentPane().add(loginpadraoBT);
 		
+		JLabel lblNewLabel = new JLabel("Configuração do Banco de Dados");
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 18));
+		lblNewLabel.setBounds(125, 26, 256, 23);
+		frame.getContentPane().add(lblNewLabel);
+		
 	}	
-	
 }

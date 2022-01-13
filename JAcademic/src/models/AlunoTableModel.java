@@ -8,7 +8,7 @@ public class AlunoTableModel extends AbstractTableModel
 {
 
 	private List<Aluno> dados = new ArrayList<>();
-	private String[] colunaStrings = {"Matrícula", "Aluno", "Av1", "Av2", "Recuperação", "Situação"};
+	private String[] colunaStrings = {"Matrícula", "Aluno", "UNID1", "UNID2", "REC.", "Situação"};
 	
 	public AlunoTableModel() 
 	{
