@@ -21,4 +21,5 @@ Teacher does:
 The following tools were used in the construction of the project:
 
 - [Java](https://www.java.com/pt-BR/)
+- [MySql](https://www.mysql.com/)
 - [MariaDB](https://mariadb.org/)
