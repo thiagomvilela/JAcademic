@@ -13,7 +13,7 @@ Note: Students will already be registered on the platform.
 
 Teacher does:
 - Insert notes;
-- View grades and final average.
+- View grades and final average;
 - You can export the final report in “.txt” format.
 
 ### 🛠 Technologies
